@@ -1,0 +1,132 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String  @map("userId")
+  type              String
+  provider          String
+  providerAccountId String  @map("provider_account_id")
+  refresh_token     String?
+  access_token      String?
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String?
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+  @@map("accounts")
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique @map("session_token")
+  userId       String   @map("userId")
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("sessions")
+}
+
+model User {
+  id             String        @id @default(cuid())
+  name           String?
+  email          String?       @unique
+  password       String
+  fone           String?
+  emailVerified  DateTime?     @map("email_verified")
+  userImage      String?
+  tipo           String
+  status         String?
+  likes          Likes[]
+  UserComments   UserComments[]
+  accounts       Account[]
+  sessions       Session[]
+  createAt       DateTime      @default(now())
+  updateAt       DateTime      @updatedAt
+
+  @@map("users")
+}
+
+model UserComments {
+  id       String     @id @default(cuid())
+  userId   String     @map("userId")
+  user     User       @relation(fields: [userId], references: [email])
+  Comments Comments[]
+  createAt DateTime   @default(now())
+  updateAt DateTime   @updatedAt
+
+
+  @@map("userComments")
+}
+
+
+model VerificationToken {
+  identifier String
+  token      String
+  expires    DateTime
+
+  @@unique([identifier, token])
+  @@map("verificationtokens")
+}
+
+model Produto {
+  id                String           @id @default(cuid())
+  Title             String
+  image1            String
+  image2            String?
+  image3            String?
+  image4            String?
+  category          String
+  description       String
+  likes             Likes[]
+  ProdutoComments   ProdutoComments[]
+  createAt          DateTime         @default(now())
+  updateAt          DateTime         @updatedAt
+}
+
+model ProdutoComments {
+   id       String     @id @default(cuid())
+  produto  Produto    @relation(fields: [produtoId], references: [id])
+  produtoId String    @map("produtoId")
+  comments Comments[]
+
+ 
+  @@map("produtoComments")
+}
+
+model Comments {
+   id                String           @id @default(cuid())
+  comment           String
+  produtoCommentsId String           @map("produtoCommentsId")
+  ProdutoComments   ProdutoComments  @relation(fields: [produtoCommentsId], references: [id])
+  UserComments      UserComments?    @relation(fields: [userCommentsId], references: [id])
+  userCommentsId    String          @map("userCommentsId")
+  createAt          DateTime         @default(now())
+  updateAt          DateTime         @updatedAt
+ 
+  @@map("comments")
+}
+
+model Likes {
+  id        String   @id @default(cuid())
+  like      Int
+  produto   Produto  @relation(fields: [produtoId], references: [id])
+  produtoId String   @map("produtoId")
+  createAt  DateTime @default(now())
+  updateAt  DateTime @updatedAt
+  User      User?    @relation(fields: [userId], references: [ email])
+  userId    String   @map("userId")
+
+
+  @@map("likes")
+}
