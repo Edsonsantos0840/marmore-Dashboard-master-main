@@ -8,7 +8,6 @@ import CardProdutoCliente from "../cards/CardProdutoCliente";
 export default function FormComment(props: { dat: any; userId: any }) {
   const urlp = `/api/produtos/${props.dat}`;
   const url: string = "/api/comment";
-  // const urls: string = "/api/comentarios";
   const [comentario, setComentario] = useState<string>("");
   const [loading, setLoading] = useState<boolean>(false);
   const [err, setErr] = useState<boolean>(false);

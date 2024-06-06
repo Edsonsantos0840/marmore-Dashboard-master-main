@@ -3,7 +3,6 @@
 import { AiOutlineLike } from "react-icons/ai";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import UseHttp from "../../hooks/UseHttp";
 
 export default function FormLike(props: { dat: string; userId: string; }) {
   const url: string = "http://localhost:3000/api/like";
@@ -13,15 +12,6 @@ export default function FormLike(props: { dat: string; userId: string; }) {
 
   const router = useRouter();
  
-  const {like}: {   
-    user: Array<object>;
-    product: Array<object>;
-    comment: object[];
-    like: Array<object>;
-    loading: boolean;
-    err: boolean;
-} = UseHttp(url)
-
   //funçao para criar like
   async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
     e.preventDefault();
@@ -55,7 +45,6 @@ export default function FormLike(props: { dat: string; userId: string; }) {
     <button onClick={handleSubmit}>
         <AiOutlineLike className="text-3xl" />
       </button>
-      <p className=" font-bold bg-[var(--corPrincipal)]  text-xl px-3 py-1 rounded-full shadow-md text-white " > {like?.length}</p>
     </>
   );
 }

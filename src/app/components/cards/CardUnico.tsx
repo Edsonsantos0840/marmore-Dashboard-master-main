@@ -105,7 +105,8 @@ export default function CardUnico({data }: any) {
                 {new Date(data?.createdAt).toLocaleDateString()}
               </p>
               <div className=" flex gap-2 m-auto justify-center items-center">
-                <FormLike dat={data.id} userId={session?.user.email} />
+                <FormLike dat={data?.id} userId={session?.user.email} />
+                <div className=" font-bold bg-[var(--corPrincipal)]  text-xl px-3 py-1 rounded-full shadow-md text-white " >{data?.likes.length}</div>
               </div>
               <div className="text-2xl text-[#026f80c7]"></div>
               <p className="text-[#00a1bac7] ">
