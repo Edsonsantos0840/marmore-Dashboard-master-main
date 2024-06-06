@@ -3,6 +3,7 @@ import Link from "next/link";
 import UseHttp from "../../hooks/UseHttp";
 import FormLike from "../form/FormLike";
 import { useSession } from "next-auth/react"; 
+import CardDelLike from "./CardDelLike";
 
 export default function CardUnico({data }: any) {
   const url: string = "/api/comentarios"
@@ -10,6 +11,7 @@ export default function CardUnico({data }: any) {
 
 
   const { comment } = UseHttp(url)
+
 
   return (
     <>
@@ -105,7 +107,8 @@ export default function CardUnico({data }: any) {
                 {new Date(data?.createdAt).toLocaleDateString()}
               </p>
               <div className=" flex gap-2 m-auto justify-center items-center">
-                <FormLike dat={data?.id} userId={session?.user.email} />
+            <FormLike dat={data?.id} userId={session?.user.email} />
+                <CardDelLike data={data?.likes[0]?.id}/>
                 <div className=" font-bold bg-[var(--corPrincipal)]  text-xl px-3 py-1 rounded-full shadow-md text-white " >{data?.likes.length}</div>
               </div>
               <div className="text-2xl text-[#026f80c7]"></div>

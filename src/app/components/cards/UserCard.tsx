@@ -6,7 +6,7 @@ import { useState } from "react";
 
 
 export default function UserCard({ data }: any) {
-  const url = `http://localhost:3000//api/users/${data.id}`
+  const url: string = `http://localhost:3000/api/users/${data.id}`
   const [loading, setLoading] = useState<boolean>(false);
   const [err, setErr] = useState<boolean>(false);
  

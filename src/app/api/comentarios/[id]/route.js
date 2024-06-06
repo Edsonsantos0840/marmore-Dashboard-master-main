@@ -57,18 +57,6 @@ export async function PUT(request, { params }) {
 
   return NextResponse.json(commentAtualiza);
 }
-// export async function PATCHT(request, { params }) {
-//   const data = await request.json();
-
-//   const commentAtualiza = await prisma.comments.update({
-//     where: {
-//       id: params.id,
-//     },
-//     data: data,
-//   });
-
-//   return NextResponse.json(commentAtualiza);
-// }
 
 export async function DELETE(request, { params }) {
   try {

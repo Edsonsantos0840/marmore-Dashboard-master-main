@@ -7,7 +7,7 @@ function Comments({ produtoId, userId }) {
 
   useEffect(() => {
     fetchComments();
-  }, []);
+  });
 
   const fetchComments = async () => {
     try {
