@@ -2,24 +2,14 @@ import Image from "next/image";
 import Link from "next/link";
 import UseHttp from "../../hooks/UseHttp";
 import FormLike from "../form/FormLike";
-import { useEffect } from "react";
+import { useSession } from "next-auth/react"; 
 
-export default function CardUnico({ params, data }: any) {
+export default function CardUnico({data }: any) {
   const url: string = "/api/comentarios"
+  const { data: session } = useSession()
+
 
   const { comment } = UseHttp(url)
-
-// useEffect(() => {
-//   if(comment){
-//     console.log(comment[0]?.UserComments?.user
-
-//   )
-//    }
-//   if(data){
-//     console.log(data
-//   )
-//    }
-// },[comment, data] )
 
   return (
     <>
@@ -115,7 +105,7 @@ export default function CardUnico({ params, data }: any) {
                 {new Date(data?.createdAt).toLocaleDateString()}
               </p>
               <div className=" flex gap-2 m-auto justify-center items-center">
-                <FormLike dat={data} userId={params?.id} />
+                <FormLike dat={data.id} userId={session?.user.email} />
               </div>
               <div className="text-2xl text-[#026f80c7]"></div>
               <p className="text-[#00a1bac7] ">

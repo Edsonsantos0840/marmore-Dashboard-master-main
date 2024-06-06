@@ -121,10 +121,10 @@ model Likes {
   id        String   @id @default(cuid())
   like      Int
   produto   Produto  @relation(fields: [produtoId], references: [id])
-  produtoId String   @map("produtoId")
+  produtoId String   
   createAt  DateTime @default(now())
   updateAt  DateTime @updatedAt
-  User      User?    @relation(fields: [userId], references: [ email])
+  User      User    @relation(fields: [userId], references: [email])
   userId    String   @map("userId")
 
 

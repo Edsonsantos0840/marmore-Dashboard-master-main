@@ -5,11 +5,10 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import UseHttp from "../../hooks/UseHttp";
 
-export default function FormLike(props: { dat: number; userId: number; }) {
-  const url: string = "/api/like";
+export default function FormLike(props: { dat: string; userId: string; }) {
+  const url: string = "http://localhost:3000/api/like";
   const [loading, setLoading] = useState<boolean>(false);
   const [err, setErr] = useState<boolean>(false);
-  const qtd: object[] = []
   const [count, setCount] = useState<number>(1);
 
   const router = useRouter();
@@ -29,8 +28,8 @@ export default function FormLike(props: { dat: number; userId: number; }) {
     setCount(count);
     const curtir: object = {
       like: count,
-      produtoId: Number(props.dat),
-      userId: Number(props.userId),
+      produtoId: props.dat,
+      userId: props.userId,
     };
     setLoading(true);
     try {
@@ -48,12 +47,6 @@ export default function FormLike(props: { dat: number; userId: number; }) {
     setLoading(false);
   }
 
-    like?.filter((e: { produtoId: number; like: object; }) => {
-      if(e.produtoId == props.dat){
-       qtd.push(e.like)
-      }
-    } )
-
   return (
     <>
     {loading && <h1>Carregando..</h1>}
@@ -62,7 +55,7 @@ export default function FormLike(props: { dat: number; userId: number; }) {
     <button onClick={handleSubmit}>
         <AiOutlineLike className="text-3xl" />
       </button>
-      <p className=" font-bold bg-[var(--corPrincipal)]  text-xl px-3 py-1 rounded-full shadow-md text-white " > {qtd.length}</p>
+      <p className=" font-bold bg-[var(--corPrincipal)]  text-xl px-3 py-1 rounded-full shadow-md text-white " > {like?.length}</p>
     </>
   );
 }
