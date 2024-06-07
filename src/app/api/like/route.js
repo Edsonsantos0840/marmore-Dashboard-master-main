@@ -20,7 +20,7 @@ export async function POST(request) {
     const { like, produtoId, userId } = await request.json();
     
     // Verificação e logs
-    console.log('Received data:', { like, produtoId, userId });
+    // console.log('Received data:', { like, produtoId, userId });
 
     const newlike = await prisma.likes.create({
       data: {
