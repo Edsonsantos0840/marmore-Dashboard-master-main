@@ -6,12 +6,18 @@ export async function GET() {
     select:{
       comment: true,
       id: true,
+      ProdutoComments: {
+        select: {
+          produtoId: true
+        }
+      },
       UserComments:{
         select:{
           user:{
             select:{
               name: true,
-              userImage: true
+              userImage: true,
+              email: true
             }
           }
         }

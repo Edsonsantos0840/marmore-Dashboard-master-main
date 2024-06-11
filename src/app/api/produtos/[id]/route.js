@@ -22,23 +22,6 @@ export async function GET(request, { params }) {
             comments: true,
             id: true,
           },
-          // include:{
-          //   comments:{
-          //     select:{
-          //       UserComments:{
-          //         select:{
-          //           user:{
-          //             select:{
-          //               id: true,
-          //               name: true,
-          //               userImage: true
-          //             }
-          //           }
-          //         }
-          //       }
-          //     }
-          //   }
-          // }
       },
       Title: true,
     }

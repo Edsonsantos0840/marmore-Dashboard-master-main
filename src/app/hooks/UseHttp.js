@@ -2,7 +2,7 @@
 import { useEffect} from "react";
 import { useState } from "react";
 
-export default function UseHttp(url) {
+export default function UseHttp( url) {
   // states
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(false);
@@ -22,11 +22,13 @@ export default function UseHttp(url) {
       } catch (error) {
         setErr(error);
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     }
-    setLoading(false);
+ 
     getUser();
-  }, [setErr, setLoading, url]);
+  }, [ setErr, setLoading, url]);
 
   // função para buscar produtos
   useEffect(() => {
@@ -39,11 +41,13 @@ export default function UseHttp(url) {
       } catch (error) {
         setErr(error);
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     }
-    setLoading(false);
+  
     getProduct();
-  }, [setErr, setLoading, url]);
+  }, [ setErr, setLoading, url]);
 
   // função para buscar comentários
   useEffect(() => {
@@ -56,11 +60,13 @@ export default function UseHttp(url) {
       } catch (error) {
         setErr(error);
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     }
-    setLoading(false);
+   
     getComment();
-  }, [setErr, setLoading, url]);
+  }, [ setErr, setLoading, url]);
 
   // função para buscar likes
   useEffect(() => {
@@ -73,9 +79,11 @@ export default function UseHttp(url) {
       } catch (error) {
         setErr(error);
         console.log(error);
+      } finally {
+        setLoading(false);
       }
     }
-    setLoading(false);
+  
     getLike();
   }, [setErr, setLoading, url]);
 

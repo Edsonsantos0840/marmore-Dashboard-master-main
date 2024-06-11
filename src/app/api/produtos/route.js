@@ -21,8 +21,7 @@ export async function GET() {
           produto: true,
           produtoId: true
         },
-
-    }
+    },
     
   }
  }

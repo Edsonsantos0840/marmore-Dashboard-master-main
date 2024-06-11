@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { db as prisma} from '../../../../libs/db';
+import { revalidatePath } from 'next/cache';
 
 export async function GET(request) {
   const { searchParams } = new URL(request.url);
@@ -21,7 +22,15 @@ export async function GET(request) {
       },
       UserComments: {
         include: {
-          user: true,
+          user: {
+            select: {
+              id: true,
+              name: true,
+              email: true,
+              tipo: true,
+              userImage: true
+            }
+          },
         },
       },
     },
@@ -61,6 +70,8 @@ export async function POST(request) {
         userCommentsId: userComments.id,
       },
     });
+
+    revalidatePath('verProdutoUnico/')
 
     return NextResponse.json(newComment);
   } catch (error) {

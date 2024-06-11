@@ -1,7 +1,8 @@
 import { NextResponse } from "next/server";
 import { db as prisma } from "../../../../libs/db"
+import { revalidatePath } from "next/cache";
 
-export async function GET() {
+export async function GET({ params }) {
   const like = await prisma.likes.findMany(
     {
     select: {
@@ -12,15 +13,13 @@ export async function GET() {
   }
 );
 
+revalidatePath(`/verProdutoUnico/${params.id}`)
   return NextResponse.json(like);
 }
 
-export async function POST(request) {
+export async function POST(request, { params }) {
   try {
     const { like, produtoId, userId } = await request.json();
-    
-    // Verificação e logs
-    // console.log('Received data:', { like, produtoId, userId });
 
     const newlike = await prisma.likes.create({
       data: {
@@ -37,6 +36,8 @@ export async function POST(request) {
         }
       },
     });
+ 
+    revalidatePath(`/verProdutoUnico/${params.id}`)
     return new Response(JSON.stringify(newlike), { status: 200 });
   } catch (error) {
     console.error('Erro ao salvar o like:', error);

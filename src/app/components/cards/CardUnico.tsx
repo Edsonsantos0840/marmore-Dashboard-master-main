@@ -1,29 +1,29 @@
 import Image from "next/image";
 import Link from "next/link";
-import UseHttp from "../../hooks/UseHttp";
 import FormLike from "../form/FormLike";
 import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
 import CardDelLike from "./CardDelLike";
 
+import { useEffect } from "react";
+
 export default function CardUnico({ data }: any) {
-  const url: string = "/api/comentarios";
   const usuarios = [data];
-
   const { data: session } = useSession();
-
-  const { comment } = UseHttp(url);
-
+ const url = '/api/produtos'
   const usu = usuarios.map((e: any, i: any) => {
-     if(e.likes[i]?.userId === session.user.email){
-      return e.likes[i].userId
-     }
+    if (e.likes[i]?.userId === session?.user.email  ) {
+      return e.likes
+      
+    }
+  });
   
-  } )
- 
+  // const { dados} = UseNovoFetch(url, data.id )
+
   // useEffect(() => {
-  //   console.log(usu)
-  // },[] )
+  //    if(dados){
+  //     console.log(dados)
+  //    }
+  //   },[dados] )
 
   return (
     <>
@@ -119,15 +119,19 @@ export default function CardUnico({ data }: any) {
                 {new Date(data?.createdAt).toLocaleDateString()}
               </p>
               <div className=" flex gap-2 m-auto justify-center items-center">
-                {
-                  usu &&
-                   !usu.includes(session?.user.email)  ?
-                   <FormLike dat={data} userId={session?.user.email} />:
-                   <CardDelLike data={data} />
-                }
-                <div className=" font-bold bg-[var(--corPrincipal)]  text-xl px-3 py-1 rounded-full shadow-md text-white ">
-                  {data?.likes.length}
-                </div>
+
+              {usu && usu.map((e: any, i: any) => (
+                  <div key={i} className="flex gap-2" >
+                   {
+                    e?.[i]?.userId !== session?.user.email   ? (
+                      <FormLike dat={data} userId={session?.user.email} />
+                    ) : (
+                      <CardDelLike data={data} />
+                    )}
+                    
+                  </div>
+                ) ) 
+              }
               </div>
               <div className="text-2xl text-[#026f80c7]"></div>
               <p className="text-[#00a1bac7] ">
@@ -138,34 +142,6 @@ export default function CardUnico({ data }: any) {
         </div>
       </div>
 
-      <div className=" w-full m-auto mt-4 py-2 px-8  font-semibold bg-slate-100 rounded-md shadow-lg ">
-        <div className="flex gap-5 p-3 items-center ">
-          <p className="  bg-[var(--corPrincipal)] py-1 px-3  rounded-full shadow-md text-white ">
-            {data?.ProdutoComments?.length}
-          </p>
-          <h4>Comentários</h4>
-        </div>
-        {comment &&
-          data?.ProdutoComments &&
-          data?.ProdutoComments.map((e) => (
-            <div key={e.id}>
-              <div className="flex gap-5 p-3 items-center ">
-                <Image
-                  className="rounded-full"
-                  src={comment[0]?.UserComments?.user?.userImage || ""}
-                  alt={comment[0]?.UserComments?.user?.name || ""}
-                  width={40}
-                  height={40}
-                />
-
-                <h4>{comment[0]?.UserComments?.user?.name}</h4>
-              </div>
-              <p className="bg-slate-50 text-center text-blue-400">
-                {e.comments[0]?.comment}
-              </p>
-            </div>
-          ))}
-      </div>
     </>
   );
 }
