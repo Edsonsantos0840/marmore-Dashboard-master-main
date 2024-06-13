@@ -28,7 +28,6 @@ export default  function CardDelLike({ data }) {
       console.log(error);
     }
     router.refresh()
-    router.push(`http://localhost:3000/verProdutoUnico/${data.id}`)
   }
 
   return (

@@ -9,7 +9,6 @@ export async function GET(request, { params }) {
     },
     select:{
       category: true,
-      createAt: true,
       description: true,
       id: true,
       image1: true,
@@ -17,16 +16,16 @@ export async function GET(request, { params }) {
       image3: true,
       image4: true,
       likes: true,
-      ProdutoComments:{
-          select:{
-            comments: true,
-            id: true,
-          },
-      },
+      // ProdutoComments:{
+      //     select:{
+      //       comments: true,
+      //       id: true,
+      //     },
+      // },
       Title: true,
     }
   });
-
+ 
   return NextResponse.json(produto);
 }
 
@@ -43,18 +42,6 @@ export async function PUT(request, { params }) {
   return NextResponse.json(produtoAtualiza);
 }
 
-// export async function PATCH(request, { params }) {
-//   const data = await request.json();
-
-//   const produtoAtualiza = await prisma.produto.update({
-//     where: {
-//       id: params.id,
-//     },
-//     data: data,
-//   });
-
-//   return NextResponse.json(produtoAtualiza);
-// }
 
 export async function DELETE(request, { params }) {
   try {

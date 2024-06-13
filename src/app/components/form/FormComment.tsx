@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import Input from "./Input";
 import CardProdutoCliente from "../cards/CardProdutoCliente";
 import Image from "next/image";
+import { revalidateTag } from "next/cache";
 
 export default function FormComment(props: { dat: any; userId: any }) {
   const urlp = `/api/produtos/${props.dat}`;
@@ -39,8 +40,8 @@ export default function FormComment(props: { dat: any; userId: any }) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(comenta),
       });
-
-      router.push(`/verProdutoUnico/${props.dat}`);
+       revalidateTag('comm')
+      // router.push(`/verProdutoUnico/${props.dat}`);
     } catch (error) {
       setErr(error);
       console.log(error);

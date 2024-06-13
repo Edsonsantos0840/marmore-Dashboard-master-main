@@ -1,3 +1,4 @@
+"use client"
 import UseHttp from "./UseHttp";
 
 export default function UseFiltro(): {
@@ -9,10 +10,7 @@ export default function UseFiltro(): {
   const url: string = `http://localhost:3000/api/produtos`
    
     const {product, err, loading}: {
-      user: Array<object>;
       product: Array<object>;
-      comment: object[];
-      like: Array<object>;
       loading: boolean;
       err: boolean;
   } = UseHttp(url)
@@ -24,6 +22,7 @@ export default function UseFiltro(): {
           return e;
         }
       });
+      
     const produtoCozinhas: Array<object> = product?.filter((e: { category: string; }) =>  {
         if (e.category === "cozinhas") {
           loading && (<><h1>Carregando Dados.......</h1></>)

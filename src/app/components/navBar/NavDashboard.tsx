@@ -4,7 +4,7 @@ import { BsShop } from "react-icons/bs";
 import { SlPresent } from "react-icons/sl";
 import { FaHome } from "react-icons/fa";
 import { AiOutlineDiff, AiOutlineUsergroupAdd } from "react-icons/ai";
-import MostraEsconde from "../MostraEsconde";
+import MostraEsconde from "../function/MostraEsconde";
 
 export default function NavDashboard() {
   return (
@@ -27,14 +27,14 @@ export default function NavDashboard() {
           <p className="text-sm text-white hover:text-red-700 ">Início</p>
         </div>
       </Link>
-     
+
       <Link
         href={"/contato"}
         className="hover:scale-110 hidden md:flex hover:text-red-700 hover:bg-white p-1"
       >
         <div className=" flex gap-1   items-center hover:text-red-700 hover:bg-white">
           <MdContactPhone className="text-xl" />
-          <p className="text-sm text-white hover:text-red-700  " >Contatos</p>
+          <p className="text-sm text-white hover:text-red-700  ">Contatos</p>
         </div>
       </Link>
       <Link
@@ -43,7 +43,10 @@ export default function NavDashboard() {
       >
         <div className=" flex gap-1   items-center hover:text-red-700 hover:bg-white">
           <AiOutlineDiff className="text-xl" />
-          <p className="text-sm text-white hover:text-red-700 " >Cadastro</p> <span className="text-xs">Produto</span>
+          <p className="text-sm text-white hover:text-red-700 ">
+            Cadastro
+          </p>{" "}
+          <span className="text-xs">Produto</span>
         </div>
       </Link>
       <Link
@@ -52,7 +55,8 @@ export default function NavDashboard() {
       >
         <div className=" flex gap-1   items-center hover:text-red-700 hover:bg-white ">
           <AiOutlineUsergroupAdd className="text-xl" />
-          <p className="text-sm text-white hover:text-red-700" >Cadastro</p><span className="text-xs">Usuário</span>
+          <p className="text-sm text-white hover:text-red-700">Cadastro</p>
+          <span className="text-xs">Usuário</span>
         </div>
       </Link>
       <Link
@@ -61,7 +65,7 @@ export default function NavDashboard() {
       >
         <div className=" flex gap-1  items-center hover:text-red-700 hover:bg-white ">
           <SlPresent className="text-lg" />
-          <p className="text-sm text-white hover:text-red-700" >Produtos</p>
+          <p className="text-sm text-white hover:text-red-700">Produtos</p>
         </div>
       </Link>
       <Link
@@ -70,10 +74,9 @@ export default function NavDashboard() {
       >
         <div className=" flex gap-1   items-center hover:text-red-700 hover:bg-white ">
           <MdCoPresent className="text-lg" />
-          <p className="text-sm text-white hover:text-red-700" >Usuários</p>
+          <p className="text-sm text-white hover:text-red-700">Usuários</p>
         </div>
       </Link>
-    
     </nav>
   );
 }

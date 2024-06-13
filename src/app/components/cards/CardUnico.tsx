@@ -4,26 +4,20 @@ import FormLike from "../form/FormLike";
 import { useSession } from "next-auth/react";
 import CardDelLike from "./CardDelLike";
 
-import { useEffect } from "react";
-
 export default function CardUnico({ data }: any) {
   const usuarios = [data];
   const { data: session } = useSession();
- const url = '/api/produtos'
   const usu = usuarios.map((e: any, i: any) => {
-    if (e.likes[i]?.userId === session?.user.email  ) {
-      return e.likes
-      
+    if (e.likes[i]?.userId === session?.user.email) {
+      return e.likes;
     }
   });
-  
-  // const { dados} = UseNovoFetch(url, data.id )
 
   // useEffect(() => {
-  //    if(dados){
-  //     console.log(dados)
+  //    if(json){
+  //     console.log(json)
   //    }
-  //   },[dados] )
+  //   },[json] )
 
   return (
     <>
@@ -119,19 +113,16 @@ export default function CardUnico({ data }: any) {
                 {new Date(data?.createdAt).toLocaleDateString()}
               </p>
               <div className=" flex gap-2 m-auto justify-center items-center">
-
-              {usu && usu.map((e: any, i: any) => (
-                  <div key={i} className="flex gap-2" >
-                   {
-                    e?.[i]?.userId !== session?.user.email   ? (
-                      <FormLike dat={data} userId={session?.user.email} />
-                    ) : (
-                      <CardDelLike data={data} />
-                    )}
-                    
-                  </div>
-                ) ) 
-              }
+                {usu &&
+                  usu.map((e: any, i: any) => (
+                    <div key={i} className="flex gap-2">
+                      {e?.[i]?.userId !== session?.user.email ? (
+                        <FormLike dat={data} userId={session?.user.email} />
+                      ) : (
+                        <CardDelLike data={data} />
+                      )}
+                    </div>
+                  ))}
               </div>
               <div className="text-2xl text-[#026f80c7]"></div>
               <p className="text-[#00a1bac7] ">
@@ -141,7 +132,6 @@ export default function CardUnico({ data }: any) {
           </div>
         </div>
       </div>
-
     </>
   );
 }

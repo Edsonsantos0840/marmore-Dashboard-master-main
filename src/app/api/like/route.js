@@ -13,7 +13,6 @@ export async function GET({ params }) {
   }
 );
 
-revalidatePath(`/verProdutoUnico/${params.id}`)
   return NextResponse.json(like);
 }
 
@@ -37,7 +36,7 @@ export async function POST(request, { params }) {
       },
     });
  
-    revalidatePath(`/verProdutoUnico/${params.id}`)
+  
     return new Response(JSON.stringify(newlike), { status: 200 });
   } catch (error) {
     console.error('Erro ao salvar o like:', error);

@@ -12,16 +12,16 @@ export async function GET() {
     image2: true,
     image3: true,
     image4: true,
-    likes: true,
+    // likes: true,
     Title: true,
-    ProdutoComments:{
-        select:{
-          comments: true,
-          id: true,
-          produto: true,
-          produtoId: true
-        },
-    },
+    // ProdutoComments:{
+    //     select:{
+    //       comments: true,
+    //       id: true,
+    //       produto: true,
+    //       produtoId: true
+    //     },
+    // },
     
   }
  }

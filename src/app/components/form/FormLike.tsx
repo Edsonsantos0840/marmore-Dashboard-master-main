@@ -11,7 +11,10 @@ export default function FormLike(data: any) {
   const [err, setErr] = useState<string>("");
   const [count, setCount] = useState<number>(1);
 
-  const {like} = UseHttp(urlMl)
+  const {like}: {
+    like: Array<object>
+  } = UseHttp(urlMl)
+
    
   const router = useRouter();
   
@@ -39,14 +42,12 @@ export default function FormLike(data: any) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(curtir),
       });
-
-
+         router.refresh()
     } catch (error) {
       setErr("Houve um erro ao curtir");
       console.log(error);
     }
-    router.refresh()
-    router.push(`http://localhost:3000/verProdutoUnico/${data?.dat?.id}`)
+
   }
 
   return (

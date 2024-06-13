@@ -27,7 +27,7 @@
     ".next/types/**/*.ts",
     "**/*.ts",
     "**/*.tsx"
-, "src/app/(auth)/layout.js", "src/app/hooks/UseHttp.js", "src/app/hooks/UseNovoFetch.js"  ],
+, "src/app/(auth)/layout.js", "src/app/hooks/UseHttp.js",   ],
   "exclude": [
     "node_modules"
   ]

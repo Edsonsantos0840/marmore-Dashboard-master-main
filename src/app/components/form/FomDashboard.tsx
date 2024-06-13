@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Input from "./Input";
 import UseConvert from "../../hooks/UseConvert";
-import ConvertImage from "../ConvertImage";
+import ConvertImage from "../function/ConvertImage";
 import { useRouter } from "next/navigation";
 
 export default function FormUsuario() {
@@ -16,12 +16,11 @@ export default function FormUsuario() {
   const [loading, setLoading] = useState<boolean>(false);
   const [err, setErr] = useState<boolean>(false);
 
-  const router = useRouter()
+  const router = useRouter();
 
   const { userImage, convertToBase64 } = UseConvert();
 
-
- async function handleSubmit(e: React.SyntheticEvent): Promise<void>{
+  async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
     e.preventDefault();
     const usuario: object = {
       name,
@@ -33,21 +32,21 @@ export default function FormUsuario() {
       status,
     };
 
-   setLoading(true)
+    setLoading(true);
     try {
-        await fetch(url, {
+      await fetch(url, {
         method: "POST",
-        headers: {"Content-Type":"application/json" },
-        body: JSON.stringify(usuario)
-      })
-      
-      alert('Usuário cadastrado com sucesso')
-      router.push('/usuarios')
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(usuario),
+      });
+
+      alert("Usuário cadastrado com sucesso");
+      router.push("/usuarios");
     } catch (error) {
-      setErr(error)
-      console.log(error)
+      setErr(error);
+      console.log(error);
     }
-    setLoading(false)
+    setLoading(false);
   }
 
   return (
@@ -63,35 +62,45 @@ export default function FormUsuario() {
         type="text"
         placeholder="Digite seu Nome"
         value={name}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) => setName(e.target.value)}
+        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setName(e.target.value)
+        }
       />
       <Input
         texto="E-mail"
         type="email"
         placeholder="Digite seu E-mail"
         value={email}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
+        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setEmail(e.target.value)
+        }
       />
       <Input
         texto="Senha"
         type="password"
         placeholder="Digite seu Senha"
         value={password}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setPassword(e.target.value)
+        }
       />
       <Input
         texto="Telefone"
         type="tel"
         placeholder="Digite seu Telefone"
         value={fone}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) => setFone(e.target.value)}
+        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setFone(e.target.value)
+        }
       />
       <div className=" flex justify-between w-full gap-2 ml-4">
         <label className=" text-center py-2 w-full rounded-md border border-[#4e1d1d87] my-2">
           <select
             id="tipo"
             value={tipo}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setTipo(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setTipo(e.target.value)
+            }
           >
             <option value="">Escolha o tipo</option>
             <option value="adimin">Administrador</option>
@@ -103,7 +112,9 @@ export default function FormUsuario() {
           <select
             id="status"
             value={status}
-            onChange={(e: React.ChangeEvent<HTMLSelectElement>) => setStatus(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setStatus(e.target.value)
+            }
           >
             <option value="">Escolha o status</option>
             <option value="ativo">Ativo</option>
@@ -112,14 +123,12 @@ export default function FormUsuario() {
         </label>
       </div>
       <ConvertImage func={convertToBase64} img={userImage} />
-      {
-        loading ?
-        <Input type="submit" value="Aguarde" disabled/> :
+      {loading ? (
+        <Input type="submit" value="Aguarde" disabled />
+      ) : (
         <button>Enviar</button>
-      }
+      )}
       {err && <p>{err}</p>}
     </form>
   );
 }
-
-

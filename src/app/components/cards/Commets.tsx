@@ -11,7 +11,7 @@ function Comments({ produtoId, userId }) {
 
   const fetchComments = async () => {
     try {
-      const response = await fetch(`/${url}?produtoId=${produtoId}`);
+      const response = await fetch(`/${url}?produtoId=${produtoId}`, { cache: 'no-store' });
       const data = await response.json();
       setComments(data);
     } catch (error) {

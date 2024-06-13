@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import Input from "./Input";
 import UseConvert from "../../hooks/UseConvert";
-import ConvertImage from "../ConvertImage";
+import ConvertImage from "../function/ConvertImage";
 import { useRouter } from "next/navigation";
 
 export default function FormProdutos(): React.JSX.Element {

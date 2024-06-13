@@ -10,7 +10,7 @@ export async function GET(req,{ params }) {
     },
   });
 
-   revalidatePath(`/verProdutoUnico/${params.id}`)
+  
   return NextResponse.json(like);
 }
 
@@ -24,7 +24,7 @@ export async function DELETE(req, { params }) {
       },
     });
 
-    revalidatePath(`/verProdutoUnico/${params.id}`)
+    
     return NextResponse.json(likeRemove);
   } catch (error) {
     return NextResponse.json(error.message);

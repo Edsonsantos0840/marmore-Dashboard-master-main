@@ -54,9 +54,13 @@ export default function UseHttp( url) {
     setLoading(true);
     async function getComment() {
       try {
-        const res = await fetch(url);
+        const res = await fetch(url, {
+          next: {
+            tags: ['comm']
+          }
+        } );
         const json = await res.json();
-        setComment(json);
+        setComment(json );
       } catch (error) {
         setErr(error);
         console.log(error);
@@ -66,7 +70,7 @@ export default function UseHttp( url) {
     }
    
     getComment();
-  }, [ setErr, setLoading, url]);
+  }, [setErr, setLoading, url]);
 
   // função para buscar likes
   useEffect(() => {

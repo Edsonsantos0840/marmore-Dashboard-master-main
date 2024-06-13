@@ -71,7 +71,7 @@ export async function POST(request) {
       },
     });
 
-    revalidatePath('verProdutoUnico/')
+   revalidatePath(`/verProdutoUnico/${produtoId}`)
 
     return NextResponse.json(newComment);
   } catch (error) {

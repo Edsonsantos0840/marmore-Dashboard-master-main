@@ -1,13 +1,16 @@
-'use client'
-import React from 'react'
+
 import CardProdutoUnico from '../../components/cards/CardProdutoUnico';
-import UseFiltro from '../../hooks/UseFiltro';
+import getData from '../../components/function/GetData';
 
-export default function Exteriores() {
-
-  const {produtoExteriores}: {
-    produtoExteriores: object[];
-} = UseFiltro()
+export default async function Exteriores() {
+    const url = `http://localhost:3000/api/produtos`
+    const data = await getData(url)
+  
+    const produtoExteriores = data.filter((e:any) => {
+       if(e?.category.includes('exteriores')){
+        return e
+       }
+    } )
 
   return (
     <section>

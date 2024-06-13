@@ -1,7 +1,7 @@
 import { getCurrentUser } from "../../../../libs/session";
 import Link from "next/link";
 import BtnLogout from "../botões/btnLogout";
-import MostraEsconde from "../MostraEsconde";
+import MostraEsconde from "../function/MostraEsconde";
 
 export default async function NavPublicos() {
   const user: any = await getCurrentUser();

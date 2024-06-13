@@ -1,18 +1,21 @@
-'use client'
-import React from 'react'
+
 import CardProdutoUnico from '../../components/cards/CardProdutoUnico';
-import UseFiltro from '../../hooks/UseFiltro';
+import getData from '../../components/function/GetData';
 
-export default function Cozinhas() {
-
-  const {produtoCozinhas}: {
-    produtoCozinhas: object[];
-} = UseFiltro()
+export default async function Cozinhas() {
+    const url = `http://localhost:3000/api/produtos`
+    const data = await getData(url)
+  
+    const produtoCozinhas = data.filter((e:any) => {
+       if(e?.category.includes('cozinhas')){
+        return e
+       }
+    } )
 
   return (
     <section>
     <h1 className="pt-16">Cozinhas</h1>
-    { produtoCozinhas&&
+    { produtoCozinhas &&
       produtoCozinhas.map((produto: any) => (
       <div key={produto.id}>
         <CardProdutoUnico data={produto} />
