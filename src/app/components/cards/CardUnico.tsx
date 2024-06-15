@@ -1,3 +1,5 @@
+'use client'
+// É extremamente importante manter esse componente como cliente.
 import Image from "next/image";
 import Link from "next/link";
 import FormLike from "../form/FormLike";
@@ -12,12 +14,6 @@ export default function CardUnico({ data }: any) {
       return e.likes;
     }
   });
-
-  // useEffect(() => {
-  //    if(json){
-  //     console.log(json)
-  //    }
-  //   },[json] )
 
   return (
     <>
@@ -39,7 +35,7 @@ export default function CardUnico({ data }: any) {
                 name="frame"
                 className=" m-auto rounded-md hover:scale-110 hover:mt-10  left-[19%] ease-in overflow-hidden duration-300"
               >
-                <h1>Seu navegador não é compaível com a tecnologia.</h1>
+                Seu navegador não é compaível com a tecnologia.
               </iframe>
             </div>
 
@@ -119,7 +115,7 @@ export default function CardUnico({ data }: any) {
                       {e?.[i]?.userId !== session?.user.email ? (
                         <FormLike dat={data} userId={session?.user.email} />
                       ) : (
-                        <CardDelLike data={data} />
+                        <CardDelLike dat={data} />
                       )}
                     </div>
                   ))}

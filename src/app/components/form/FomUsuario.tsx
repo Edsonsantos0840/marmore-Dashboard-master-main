@@ -1,29 +1,24 @@
-"use client";
-import React, { SyntheticEvent, useState } from "react";
 import Input from "./Input";
-import { useRouter } from "next/navigation";
+import { redirect } from "next/navigation";
 
 export default function FormUsuario() {
   const url = "http://localhost:3000/api/users";
   const tipo = "usuario";
-  const [name, setName] = useState<string>("");
-  const [email, setEmail] = useState<string>("");
-  const [password, setPassword] = useState<string>("");
-  const [confirmPass, setConfirmPass] = useState<string>("");
-  const [loading, setLoading] = useState<boolean>(false);
-  const [err, setErr] = useState<boolean>(false);
+  var loading: boolean;
+  var err: string;
 
-  const router = useRouter();
+  async function handleSubmit(form: FormData): Promise<void> {
+    const name = form.get("name");
+    const email = form.get("name");
+    const password = form.get("name");
 
-  async function handleSubmit(e: SyntheticEvent): Promise<void> {
-    e.preventDefault();
     const user: object = {
       name,
       email,
       password,
       tipo,
     };
-    setLoading(true);
+    loading = true;
     try {
       await fetch(url, {
         method: "POST",
@@ -31,53 +26,41 @@ export default function FormUsuario() {
         body: JSON.stringify(user),
       });
     } catch (error) {
-      setErr(error);
+      err = "Houve um erro ao cadastrar o usuário";
       console.log(error);
     }
-    setLoading(false);
-    router.push("/login");
+    loading = false;
+    redirect("/login");
   }
 
   return (
     <form
-      onSubmit={handleSubmit}
+      action={handleSubmit}
       className="flex flex-col justify-center items-center w-2/4 p-5 m-auto shadow-lg rounded-md"
     >
       <Input
         texto="Nome"
         type="text"
         placeholder="Digite seu Nome"
-        value={name}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setName(e.target.value)
-        }
+        name="name"
       />
       <Input
         texto="E-mail"
         type="email"
         placeholder="Digite seu E-mail"
-        value={email}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
-        setEmail(e.target.value)
-        }
+        name="email"
       />
       <Input
         texto="Senha"
         type="password"
         placeholder="Digite seu Senha"
-        value={password}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
-        setPassword(e.target.value)
-        }
+        password="password"
       />
       <Input
         texto="Confirmar Senha"
         type="password"
         placeholder="Confirme a Senha"
-        value={confirmPass}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
-        setConfirmPass(e.target.value)
-        }
+        confirmPass="confirmPass"
       />
       {loading ? (
         <Input type="submit" value="Aguarde" disabled />

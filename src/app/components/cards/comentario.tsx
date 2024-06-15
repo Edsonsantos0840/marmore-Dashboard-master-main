@@ -1,13 +1,12 @@
-import Comments from './Commets';
+import Comments from "./Commets";
 
-function ProdutoPage( { produtoId, userId }) {
+function ProdutoPage({ produtoId, userId }) {
   // Código para buscar os dados do produto
 
   return (
     <div>
       {/* Código para exibir os detalhes do produto */}
       <Comments produtoId={produtoId} userId={userId} />
-   
     </div>
   );
 }

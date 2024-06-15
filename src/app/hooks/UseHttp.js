@@ -54,11 +54,13 @@ export default function UseHttp( url) {
     setLoading(true);
     async function getComment() {
       try {
-        const res = await fetch(url, {
-          next: {
-            tags: ['comm']
-          }
-        } );
+        const res = await fetch(url
+        //   , {
+        //   next: {
+        //     tags: ['comm']
+        //   }
+        // }
+       );
         const json = await res.json();
         setComment(json );
       } catch (error) {

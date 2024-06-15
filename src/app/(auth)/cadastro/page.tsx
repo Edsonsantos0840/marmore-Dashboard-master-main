@@ -1,4 +1,4 @@
-import React from 'react'
+
 import FormUsuario from '../../components/form/FomUsuario'
 
 export default function Cadastro() {

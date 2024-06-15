@@ -78,30 +78,27 @@ export default function EditarUsers({ params }: any) {
         <h1 className="text-3xl text-center mb-8 font-bold ">
           Cadastro de Usuário
         </h1>
-        <Input
-          texto="Nome"
+        <input
           type="text"
           placeholder="Digite seu Nome"
           value={name}
-          Change={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setName(e.target.value)
           }
         />
-        <Input
-          texto="E-mail"
+        <input
           type="email"
           placeholder="Digite seu E-mail"
           value={email}
-          Change={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setEmail(e.target.value)
           }
         />
-        <Input
-          texto="Telefone"
+        <input
           type="tel"
           placeholder="Digite seu Telefone"
           value={fone}
-          Change={(e: React.ChangeEvent<HTMLInputElement>) =>
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
             setFone(e.target.value)
           }
         />

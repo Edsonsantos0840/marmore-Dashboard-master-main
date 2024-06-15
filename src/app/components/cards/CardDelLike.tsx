@@ -1,42 +1,28 @@
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+'use clinte'
 import { BsHandThumbsDown } from "react-icons/bs";
-import UseHttp from "../../hooks/UseHttp";
 
-export default  function CardDelLike({ data }) {
-  const urlMl: string = `http://localhost:3000/api/like/${data.id}`;
-  const urlD: string = `http://localhost:3000/api/like/${data.likes[0]?.id}`;
-  const [err, setErr] = useState("");
+export default function CardDelLike({ dat }) {
+  const urlD: string = `http://localhost:3000/api/like/${dat?.likes[0]?.id}`;
 
-  const {like} = UseHttp(urlMl)
-  const router = useRouter();
-
-  // const lik = await prisma.likes.findMany()
-
-  // useEffect(() => {
-  //   console.log(lik)
-  // },[lik] )
-
-  async function delUser(): Promise<void> {
+  async function delLike(): Promise<void> {
     try {
-        await fetch(urlD, {
+      await fetch(urlD, {
         method: "DELETE",
       });
-
     } catch (error) {
-      setErr("Erro ao deletar");
       console.log(error);
+      throw new Error("Erro ao deletar");
     }
-    router.refresh()
   }
 
   return (
     <>
-      {err && <p>{err}</p>}
-      <button onClick={delUser}>
+      <button onClick={delLike}>
         <BsHandThumbsDown className="text-2xl" />
       </button>
-      <p className=" font-bold bg-[var(--corPrincipal)]  text-xl text-center rounded-full shadow-md text-white w-10 h-10 " >{like?.length}</p>
+      <p className=" font-bold bg-[var(--corPrincipal)]  text-xl text-center rounded-full shadow-md text-white w-10 h-10 ">
+        {dat?.likes?.length}
+      </p>
     </>
   );
 }

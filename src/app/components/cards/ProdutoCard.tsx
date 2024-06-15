@@ -1,39 +1,12 @@
-"use client";
 import Image from "next/image";
-import { useRouter } from "next/navigation";
-import { FaRegEdit, FaTrash } from "react-icons/fa";
+import { FaRegEdit } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
-import { useState } from "react";
+import Link from "next/link";
+import DelProduct from "../function/DelProduct";
 
 export default function ProdutoCard({ data }: any) {
-  const url: string = `http://localhost:3000/api/produtos/${data.id}`;
-  const [loading, setLoading] = useState<boolean>(false);
-  const [err, setErr] = useState<boolean>(false);
-
-  const router = useRouter();
-
-  async function delProduct(): Promise<void> {
-    setLoading(true);
-    try {
-        await fetch(url, {
-        method: "DELETE",
-      });
-      alert("Produto deletado com sucesso");
-    } catch (error) {
-      setErr(error);
-      console.log(error);
-    }
-    setLoading(false);
-  }
-   
   return (
     <>
-          {
-          loading && <h1>Carregando Dados........</h1>
-          }
-          {
-            err && <p>{err}</p>
-          }
       <div
         key={data?.id}
         className="max-w-sm:flex-col content-center p-3 gap-2  bg-[#00000026]  rounded-xl shadow-lg mt-5 mb-5 "
@@ -45,8 +18,8 @@ export default function ProdutoCard({ data }: any) {
 
           <div className="flex gap-5 flex-wrap justify-center">
             <Image
-              src={data?.image1 || '' }
-              alt={data?.title || '' }
+              src={data?.image1 || ""}
+              alt={data?.title || ""}
               width={180}
               height={70}
               className="rounded-md shadow-lg border-2 border-[#00000047]"
@@ -54,8 +27,8 @@ export default function ProdutoCard({ data }: any) {
 
             {data.image2 ? (
               <Image
-                src={data?.image2 || '' }
-                alt={data?.title || '' }
+                src={data?.image2 || ""}
+                alt={data?.title || ""}
                 width={180}
                 height={70}
                 className="rounded-md shadow-lg border-2 border-[#00000047]"
@@ -68,8 +41,8 @@ export default function ProdutoCard({ data }: any) {
 
             {data.image3 ? (
               <Image
-                src={data.image3 || '' }
-                alt={data.title || '' }
+                src={data.image3 || ""}
+                alt={data.title || ""}
                 width={180}
                 height={70}
                 className="rounded-md shadow-lg border-2 border-[#00000047]"
@@ -82,8 +55,8 @@ export default function ProdutoCard({ data }: any) {
 
             {data.image4 ? (
               <Image
-                src={data.image4 || '' }
-                alt={data.title || '' }
+                src={data.image4 || ""}
+                alt={data.title || ""}
                 width={180}
                 height={70}
                 className="rounded-md shadow-lg border-2 border-[#00000047]"
@@ -99,19 +72,15 @@ export default function ProdutoCard({ data }: any) {
             <p className="text-[#00a1bac7] ">
               {new Date(data?.createdAt).toLocaleDateString()}
             </p>
-            <div className="flex justify-between items-center w-1/4 " >
-              <FaRegEdit
-                onClick={() => router.push("/editarProdutos/" + data.id)}
-                className="cursor-pointer"
-              />
+            <div className="flex justify-between items-center w-1/4 ">
+              <FaRegEdit className="cursor-pointer" />
+              <Link href={"/editarProdutos/" + data.id}></Link>
+              <Link href={"/verProdutoUnico/" + data.id}>
               <BsFillSendFill
-                onClick={() => router.push("/verProdutoUnico/" + data.id)}
-                className="cursor-pointer"
-              />
-
-              <FaTrash onClick={delProduct} className="cursor-pointer" />
+                className="cursor-pointer"/>
+              </Link>
             </div>
-
+              <DelProduct/>
             <p className="text-[#00a1bac7] ">
               {new Date(data?.updatedAt).toLocaleDateString()}
             </p>

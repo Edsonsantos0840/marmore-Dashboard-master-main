@@ -1,4 +1,4 @@
-import React from 'react'
+
 import FormDashboardProdutos from '../../components/form/FomDashboardProduos'
 
 export default function CadastroProduto() {

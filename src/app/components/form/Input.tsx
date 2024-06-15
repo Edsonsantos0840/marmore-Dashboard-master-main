@@ -6,8 +6,7 @@ export default function Input(props: any) {
         <input
           type={props.type}
           placeholder={props.placeholder}
-          value={props.value}
-          onChange={props.Change}
+          name={props.name}
           className={
             props.type === "submit"
               ? "bg-red-600 text-white font-bold cursor-pointer rounded-md w-full h-10 bg-[var(--corPrincipal)] hover:text-red-700 hover:bg-white hover:border-2 hover:border-red-800 m-auto my-2"

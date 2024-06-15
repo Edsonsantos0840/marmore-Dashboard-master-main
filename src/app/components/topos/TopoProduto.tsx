@@ -1,16 +1,13 @@
-"use client";
-import { useRouter } from "next/navigation";
+
+import Link from "next/link";
 
 export default function TopoAdd() {
-  const router = useRouter();
 
   return (
     <>
       <div className="flex justify-around pt-6">
         <h1>Produtos</h1>
-        <button onClick={() => router.push("/cadastroProduto")}>
-          Adicionar Produto
-        </button>
+        <Link href={"/cadastroProduto"}>Adicionar Produto</Link>
       </div>
     </>
   );
