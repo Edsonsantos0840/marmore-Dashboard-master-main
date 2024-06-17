@@ -2,6 +2,7 @@
 import { useRouter } from "next/navigation";
 import { FaTrash } from "react-icons/fa";
 
+
 export default function DelUser({ data }: any) {
   const url: string = `http://localhost:3000/api/users/${data.id}`;
 

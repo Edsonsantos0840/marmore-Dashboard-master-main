@@ -3,7 +3,7 @@ import CardUnico from "../../components/cards/CardUnico";
 import { BsReplyAllFill } from "react-icons/bs";
 
 export default function CardProdutoCliente(props: any) {
-  // console.log(props)
+ 
   return (
     <section className="pt-16">
       <div className="flex p-3 justify-between items-center">

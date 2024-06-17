@@ -16,12 +16,6 @@ export async function GET(request, { params }) {
       image3: true,
       image4: true,
       likes: true,
-      // ProdutoComments:{
-      //     select:{
-      //       comments: true,
-      //       id: true,
-      //     },
-      // },
       Title: true,
     }
   });

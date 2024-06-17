@@ -1,19 +1,12 @@
-'use client'
+"use client";
 // É extremamente importante manter esse componente como cliente.
 import Image from "next/image";
 import Link from "next/link";
 import FormLike from "../form/FormLike";
 import { useSession } from "next-auth/react";
-import CardDelLike from "./CardDelLike";
 
 export default function CardUnico({ data }: any) {
-  const usuarios = [data];
   const { data: session } = useSession();
-  const usu = usuarios.map((e: any, i: any) => {
-    if (e.likes[i]?.userId === session?.user.email) {
-      return e.likes;
-    }
-  });
 
   return (
     <>
@@ -109,16 +102,7 @@ export default function CardUnico({ data }: any) {
                 {new Date(data?.createdAt).toLocaleDateString()}
               </p>
               <div className=" flex gap-2 m-auto justify-center items-center">
-                {usu &&
-                  usu.map((e: any, i: any) => (
-                    <div key={i} className="flex gap-2">
-                      {e?.[i]?.userId !== session?.user.email ? (
-                        <FormLike dat={data} userId={session?.user.email} />
-                      ) : (
-                        <CardDelLike dat={data} />
-                      )}
-                    </div>
-                  ))}
+                <FormLike dat={data} userId={session?.user.email} />
               </div>
               <div className="text-2xl text-[#026f80c7]"></div>
               <p className="text-[#00a1bac7] ">

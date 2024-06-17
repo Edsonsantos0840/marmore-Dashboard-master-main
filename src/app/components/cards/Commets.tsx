@@ -1,16 +1,6 @@
 
-import getData from '../function/GetData';
 
 function Comments({ produtoId, userId }) {
-
-  // const [newComment, setNewComment] = useState('');
-  const url = 'http://localhost:3000/api/comment'
-
-  const { data: comments, loading}: any = getData(url)
-
-  // const handleCommentChange = (event:any) => {
-  //   setNewComment(event.target.value);
-  // };
 
   const handleCommentSubmit = async (form: FormData) => {
    'use server'
