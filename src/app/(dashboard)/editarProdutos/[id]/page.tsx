@@ -109,7 +109,7 @@ export default function EditarProdutos({ params }: any) {
             placeholder="Digite o Título"
             value={Title}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-              setTitle(e.target.value)
+            setTitle(e.target.value)
             }
           />
         </label>

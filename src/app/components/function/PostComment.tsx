@@ -1,5 +1,5 @@
 "use server";
-import { revalidateTag } from "next/cache";
+// import { revalidateTag } from "next/cache";
 
 export default async function PostComment(props: any) {
   const url: string = "http://localhost:3000//api/comment";
@@ -21,7 +21,7 @@ export default async function PostComment(props: any) {
         body: JSON.stringify(comenta),
       });
 
-      revalidateTag("comm");
+      // revalidateTag("comm");
     } catch (error) {
       console.log(error);
     }
@@ -37,22 +37,18 @@ export default async function PostComment(props: any) {
           <label className="w-[100%] flex flex-col">
             Comentários:
             <textarea
-              id="com"
+              id="tes"
               className="w-[90%] h-10"
               placeholder="Deixe seu Comentário"
               name="comentario"
             ></textarea>
           </label>
-          {/* {loading ? (
-            <button type="submit" disabled className="w-[20%] bg-[var(--corPrincipal)] text-white py-2 px-3 mb-0">Aguarde</button>
-          ) : ( */}
           <button
             type="submit"
             className="w-[20%] bg-[var(--corPrincipal)] text-white py-2 px-3 mb-0"
           >
             Comentar
           </button>
-          {/* )} */}
         </div>
       </form>
     </>

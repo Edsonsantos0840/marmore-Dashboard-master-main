@@ -6,7 +6,7 @@ import ConvertImage from "../function/ConvertImage";
 import { useRouter } from "next/navigation";
 
 export default function FormUsuario() {
-  const url: string = "http://localhost:3000/api/users";
+  const url: string = "api/users";
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
@@ -57,40 +57,36 @@ export default function FormUsuario() {
       <h1 className="text-3xl text-center mb-8 font-bold ">
         Cadastro de Usuário
       </h1>
-      <Input
-        texto="Nome"
+      <input
         type="text"
         placeholder="Digite seu Nome"
         value={name}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setName(e.target.value)
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setName(e.target.value)
         }
       />
-      <Input
-        texto="E-mail"
+      <input
         type="email"
         placeholder="Digite seu E-mail"
         value={email}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setEmail(e.target.value)
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setEmail(e.target.value)
         }
       />
-      <Input
-        texto="Senha"
+      <input
         type="password"
         placeholder="Digite seu Senha"
         value={password}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setPassword(e.target.value)
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setPassword(e.target.value)
         }
       />
-      <Input
-        texto="Telefone"
+      <input
         type="tel"
         placeholder="Digite seu Telefone"
         value={fone}
-        Change={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setFone(e.target.value)
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+        setFone(e.target.value)
         }
       />
       <div className=" flex justify-between w-full gap-2 ml-4">
@@ -99,7 +95,7 @@ export default function FormUsuario() {
             id="tipo"
             value={tipo}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setTipo(e.target.value)
+            setTipo(e.target.value)
             }
           >
             <option value="">Escolha o tipo</option>
@@ -113,7 +109,7 @@ export default function FormUsuario() {
             id="status"
             value={status}
             onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-              setStatus(e.target.value)
+            setStatus(e.target.value)
             }
           >
             <option value="">Escolha o status</option>

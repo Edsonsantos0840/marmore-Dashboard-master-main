@@ -2,7 +2,8 @@
 import { FaTrash } from "react-icons/fa";
 
 export default function DelProduct({ data }: any) {
-  const url: string = `http://localhost:3000/api/produtos/${data.id}`;
+  const url: string = `http://localhost:3000//api/produtos/${data}`;
+  // console.log(data)
 
   async function delProduct(): Promise<void> {
     try {

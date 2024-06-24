@@ -1,9 +1,9 @@
 import { getCurrentUser } from "../../../libs/session";
 
 
-export default async  function Home() {
+export default async  function Home(params: any) {
 const user = await getCurrentUser()
- console.log(user)
+ console.log('')
   return (
     <main className="flex min-h-screen flex-col items-center justify-between pt-14">
       <div>
@@ -11,7 +11,7 @@ const user = await getCurrentUser()
        <p>tudo bem</p>
        <p>{user?.email}</p>
       </div>
-
+    
     </main>
   );
 }

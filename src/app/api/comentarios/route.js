@@ -13,6 +13,7 @@ export async function GET() {
       },
       UserComments:{
         select:{
+          userId: true,
           user:{
             select:{
               name: true,

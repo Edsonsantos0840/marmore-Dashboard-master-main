@@ -11,7 +11,7 @@ export default function NavDashboard() {
     <nav
       className=" flex w-full h-12 justify-center
        md:flex-col  md:justify-around  items-center md:items-start
-      p-1 shadow-xl md:w-[19%] md:h-[calc(100vh-1.2rem)] bg-red-800 text-white"
+      p-1 shadow-xl md:w-[19%] md:h-[calc(100vh-1.2rem)] bg-red-800 text-white z-30 "
     >
       <div className="hidden md:flex gap-[.3] p-1  items-center ">
         <BsShop className="text-lg md:text-xl lg:xl" />

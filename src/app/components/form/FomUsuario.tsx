@@ -4,13 +4,11 @@ import { redirect } from "next/navigation";
 export default function FormUsuario() {
   const url = "http://localhost:3000/api/users";
   const tipo = "usuario";
-  var loading: boolean;
-  var err: string;
 
   async function handleSubmit(form: FormData): Promise<void> {
     const name = form.get("name");
-    const email = form.get("name");
-    const password = form.get("name");
+    const email = form.get("email");
+    const password = form.get("password");
 
     const user: object = {
       name,
@@ -18,7 +16,7 @@ export default function FormUsuario() {
       password,
       tipo,
     };
-    loading = true;
+   
     try {
       await fetch(url, {
         method: "POST",
@@ -26,10 +24,10 @@ export default function FormUsuario() {
         body: JSON.stringify(user),
       });
     } catch (error) {
-      err = "Houve um erro ao cadastrar o usuário";
+    
       console.log(error);
     }
-    loading = false;
+   
     redirect("/login");
   }
 
@@ -62,12 +60,8 @@ export default function FormUsuario() {
         placeholder="Confirme a Senha"
         confirmPass="confirmPass"
       />
-      {loading ? (
-        <Input type="submit" value="Aguarde" disabled />
-      ) : (
+
         <Input type="submit" value="Enviar" />
-      )}
-      {err && <p>{err}</p>}
     </form>
   );
 }

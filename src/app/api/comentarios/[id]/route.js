@@ -2,11 +2,9 @@ import { NextResponse } from "next/server";
 import { db as prisma } from "../../../../../libs/db"
 
 export async function GET(req,{ params }) {
-  const comment = await prisma.comments.findMany({
+  const comment = await prisma.comments.findUnique({
     where: {
-      ProdutoComments:{
-        produtoId: params.id
-      }
+      id: params.id
     },
     select:{
       id: true,

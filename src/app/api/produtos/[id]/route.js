@@ -15,7 +15,13 @@ export async function GET(request, { params }) {
       image2: true,
       image3: true,
       image4: true,
-      likes: true,
+      likes: {
+       select: {
+        id: true,
+        produtoId: true,
+        userId: true
+       }
+      },
       Title: true,
     }
   });

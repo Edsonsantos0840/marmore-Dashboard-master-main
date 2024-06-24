@@ -1,15 +1,17 @@
+'use client'
 import Image from "next/image";
-import { FaRegEdit, FaTrash, FaRegCircle } from "react-icons/fa";
+import { FaRegEdit, FaRegCircle } from "react-icons/fa";
 import DelUser from "../function/DelUser";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function UserCardUnico({ data }: any) {
-
+  const [id, setId] = useState('')
   return (
     <>
       <div
         key={data?.id}
-        className=" bg-[#00000026]  rounded-sm shadow-lg  mb-5 p-14 mt-48 "
+        className=" bg-[#00000026]  rounded-sm shadow-lg  mb-5 p-14 mt-48 " onMouseOver={() => setId(data?.id) }
       >
         <div className="flex justify-between gap-4 ">
           <div className="flex flex-col justify-between items-center ">
@@ -28,7 +30,7 @@ export default function UserCardUnico({ data }: any) {
               <FaRegEdit className="cursor-pointer" />
               <Link href={"editarUsers/" + data?.id}></Link>
 
-              <DelUser />
+              <DelUser data={id} />
 
               {data?.status === "ativo" ? (
                 <FaRegCircle className="bg-green-400 rounded-full border-none" />

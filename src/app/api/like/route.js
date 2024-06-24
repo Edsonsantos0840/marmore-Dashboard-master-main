@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import { db as prisma } from "../../../../libs/db"
-import { revalidatePath } from "next/cache";
 
-export async function GET({ params }) {
+
+export async function GET() {
   const like = await prisma.likes.findMany(
     {
     select: {
@@ -16,7 +16,7 @@ export async function GET({ params }) {
   return NextResponse.json(like);
 }
 
-export async function POST(request, { params }) {
+export async function POST(request) {
   try {
     const { like, produtoId, userId } = await request.json();
 

@@ -17,11 +17,7 @@ export default function FormLike(data: any) {
       return e;
     }
   });
-  // if(filtraLike){
-  //   console.log(filtraLike)
-  // }
-
-  //funçao para criar like
+ 
   async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
     e.preventDefault();
 

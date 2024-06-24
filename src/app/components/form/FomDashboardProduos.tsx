@@ -67,7 +67,7 @@ export default function FormProdutos(): React.JSX.Element {
           id="category"
           value={category}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-            setCategory(e.target.value)
+          setCategory(e.target.value)
           }
         >
           <option value="">------Selecione uma Categoria</option>
@@ -86,7 +86,7 @@ export default function FormProdutos(): React.JSX.Element {
           placeholder="Digite o Título"
           value={Title}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setTitle(e.target.value)
+          setTitle(e.target.value)
           }
         />
       </label>
@@ -105,7 +105,7 @@ export default function FormProdutos(): React.JSX.Element {
           placeholder="Descrição"
           value={description}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-            setDescription(e.target.value)
+          setDescription(e.target.value)
           }
         ></textarea>
       </label>

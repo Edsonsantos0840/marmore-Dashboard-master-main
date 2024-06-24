@@ -1,17 +1,21 @@
+'use client'
 import Image from "next/image";
 import { FaRegEdit, FaRegCircle } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
 
 import Link from "next/link";
 import DelUser from "../function/DelUser";
+import { useState } from "react";
 
-export default function UserCard({ data }: any) {
-
+export default function UserCard( {data} : any) {
+  const [id, setId] = useState('')
+ 
   return (
     <>
       <div
         key={data?.id}
         className=" text-xs md:text-base bg-[#00000016]  rounded-sm shadow-lg mt-5 mb-5 "
+        onMouseOver={() => setId(data.id)}
       >
         <div className="flex justify-between items-center ">
           {data.userImage && (
@@ -51,7 +55,7 @@ export default function UserCard({ data }: any) {
             <BsFillSendFill className="cursor-pointer" />
             </Link>
 
-            <DelUser/>
+            <DelUser data = {id} />
 
             {data.status === "ativo" ? (
               <FaRegCircle className="bg-green-400 rounded-full" />

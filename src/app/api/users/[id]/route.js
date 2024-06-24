@@ -24,18 +24,6 @@ export async function PUT(request, { params }) {
   return NextResponse.json(userAtualiza);
 }
 
-// export async function PATCH(request, { params }) {
-//   const data = await request.json();
-
-//   const userAtualiza = await prisma.user.update({
-//     where: {
-//       id: params.id,
-//     },
-//     data: data,
-//   });
-
-//   return NextResponse.json(userAtualiza);
-// }
 
 export async function DELETE(request, { params }) {
   try {

@@ -4,13 +4,13 @@ import Input from "./Input";
 import UseConvert from "../../hooks/UseConvert";
 import ConvertImage from "../function/ConvertImage";
 import { useRouter } from "next/navigation";
+import useSWR from "swr";
 
 export default function FormEditaProduto({ params }: any) {
   const url = `http://localhost:3000/api/produtos/${params.id}`;
   const [category, setCategory] = useState<string>("");
   const [Title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");
-  const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(false);
   const [err, setErr] = useState<boolean>(false);
 
@@ -31,21 +31,9 @@ export default function FormEditaProduto({ params }: any) {
     convert645,
   } = UseConvert();
 
-  useEffect(() => {
-    async function getProduto(): Promise<void> {
-      setLoading(true);
-      try {
-        const res = await fetch(url);
-        const json = await res.json();
-        setProduct(json);
-      } catch (error) {
-        setErr(error);
-        console.log(error);
-      }
-      setLoading(false);
-    }
-    getProduto();
-  }, [url]);
+  const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+  const { data: product, mutate } = useSWR(url, fetcher);
 
   setTitle(product.Title);
   setImage1(product.image1);
@@ -55,8 +43,9 @@ export default function FormEditaProduto({ params }: any) {
   setCategory(product.category);
   setDescription(product.description);
 
-  async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
-    e.preventDefault();
+  async function handleSubmit(e: any): Promise<void> {
+  e.preventDefault()
+  
     const produto: object = {
       Title,
       image1,
@@ -97,7 +86,7 @@ export default function FormEditaProduto({ params }: any) {
           id="category"
           value={category}
           onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-            setCategory(e.target.value)
+          setCategory(e.target.value)
           }
         >
           <option value="">------Selecione uma Categoria</option>
@@ -116,7 +105,7 @@ export default function FormEditaProduto({ params }: any) {
           placeholder="Digite o Título"
           value={Title}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setTitle(e.target.value)
+          setTitle(e.target.value)
           }
         />
       </label>
@@ -135,7 +124,7 @@ export default function FormEditaProduto({ params }: any) {
           placeholder="Descrição"
           value={description}
           onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) =>
-            setDescription(e.target.value)
+          setDescription(e.target.value)
           }
         ></textarea>
       </label>

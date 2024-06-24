@@ -83,7 +83,7 @@ export default function EditarUsers({ params }: any) {
           placeholder="Digite seu Nome"
           value={name}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setName(e.target.value)
+          setName(e.target.value)
           }
         />
         <input
@@ -99,7 +99,7 @@ export default function EditarUsers({ params }: any) {
           placeholder="Digite seu Telefone"
           value={fone}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-            setFone(e.target.value)
+          setFone(e.target.value)
           }
         />
         <div className=" flex justify-between w-full gap-2 ml-4">
@@ -108,7 +108,7 @@ export default function EditarUsers({ params }: any) {
               id="tipo"
               value={tipo}
               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-                setTipo(e.target.value)
+              setTipo(e.target.value)
               }
             >
               <option value="">Escolha o tipo</option>

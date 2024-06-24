@@ -7,7 +7,7 @@ export default async function NavPublicos() {
   const user: any = await getCurrentUser();
 
   return (
-    <nav className="flex  gap-4 justify-between px-5 shadow-xl mb-8 bg-red-700 text-white   fixed w-full ">
+    <nav className="flex  gap-4 justify-between px-5 shadow-xl mb-8 bg-red-700 text-white z-30  fixed w-full ">
       <MostraEsconde />
       <div className="flex justify-between items-center gap-6">
         <Link

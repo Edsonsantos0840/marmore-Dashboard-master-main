@@ -1,4 +1,4 @@
-import { SessionContext } from "next-auth/react";
+
 import { getCurrentUser } from "../../../libs/session";
 import { redirect } from "next/navigation";
 import { AuthProvider } from "../../../providers/nextProvider";

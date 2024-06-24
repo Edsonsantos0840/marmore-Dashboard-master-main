@@ -3,7 +3,8 @@ import { db as prisma } from "../../../../libs/db"
 import bcrypt from 'bcrypt'
 
 export async function GET() {
-  const user = await prisma.user.findMany({
+  const user = await prisma.user.findMany(
+    {
     select:{
       id: true,
       name: true,
@@ -12,11 +13,12 @@ export async function GET() {
       status: true,
       tipo: true,
       userImage: true,
-      sessions: true,
+      // sessions: true,
       UserComments: true,
       likes: true
     }
-  })
+  }
+)
 
   return NextResponse.json(user);
 }

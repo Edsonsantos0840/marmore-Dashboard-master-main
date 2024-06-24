@@ -1,15 +1,20 @@
+'use client'
 import Image from "next/image";
 import { FaRegEdit } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
 import Link from "next/link";
 import DelProduct from "../function/DelProduct";
+import { useState } from "react";
 
 export default function ProdutoCard({ data }: any) {
+  const [id, setId] = useState('')
+  // console.log(id)
   return (
+
     <>
       <div
         key={data?.id}
-        className="max-w-sm:flex-col content-center p-3 gap-2  bg-[#00000026]  rounded-xl shadow-lg mt-5 mb-5 "
+        className="max-w-sm:flex-col content-center p-3 gap-2  bg-[#00000026]  rounded-xl shadow-lg mt-5 mb-5 " onMouseOver={() => setId(data.id) }
       >
         <div className=" gap-3  ">
           <h2 className=" text-red-700 font-bold text-center text-xl p-6">
@@ -68,19 +73,20 @@ export default function ProdutoCard({ data }: any) {
             )}
           </div>
 
-          <div className="flex justify-between items-center gap-5 text-red-700 p-4 bg-[#fecaca82] rounded-md shadow-md w-11/12 m-auto my-5">
+          <div className="flex justify-between items-center gap-5 text-red-700 p-4 bg-[#fecaca82] rounded-md shadow-md w-11/12 m-auto my-5"  >
             <p className="text-[#00a1bac7] ">
               {new Date(data?.createdAt).toLocaleDateString()}
             </p>
-            <div className="flex justify-between items-center w-1/4 ">
+            <div className="flex justify-between items-center w-1/4 "  >
+              <Link href={"/editarProdutos/" + data.id}>
               <FaRegEdit className="cursor-pointer" />
-              <Link href={"/editarProdutos/" + data.id}></Link>
+              </Link>
               <Link href={"/verProdutoUnico/" + data.id}>
               <BsFillSendFill
                 className="cursor-pointer"/>
               </Link>
             </div>
-              <DelProduct/>
+              <DelProduct data={data.id} />
             <p className="text-[#00a1bac7] ">
               {new Date(data?.updatedAt).toLocaleDateString()}
             </p>

@@ -7,12 +7,12 @@ export async function GET() {
   select: {
     category: true,
     id: true,
-    description: true,
+    // description: true,
     image1: true,
-    image2: true,
-    image3: true,
-    image4: true,
-    Title: true,
+    // image2: true,
+    // image3: true,
+    // image4: true,
+    // Title: true,
   }
  }
 )
