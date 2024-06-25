@@ -9,7 +9,7 @@ export default async function Início({params}: any) {
 
   return (
     <div >
-      <FormComment dat={id} userId={user.email} />
+      <FormComment dat={id} userId={user?.email || ''} />
     </div>
   );
 }

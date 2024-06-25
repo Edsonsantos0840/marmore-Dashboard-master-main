@@ -1,6 +1,6 @@
 // icones
 "use client";
-import { BsHandThumbsUp,  BsHandThumbsDown } from "react-icons/bs";
+import { BsHandThumbsUp, BsHandThumbsDown } from "react-icons/bs";
 import useSWR from "swr";
 import { useSession } from "next-auth/react";
 
@@ -12,12 +12,18 @@ export default function FormLike(data: any) {
 
   const { data: like, mutate } = useSWR(url, fetcher);
   const { data: session } = useSession();
+
   const filtraLike = like?.filter((e: any) => {
     if (e?.produtoId === data?.dat?.id) {
       return e;
     }
   });
- 
+
+  const deuLike = filtraLike?.map((e: any) => {
+    return e.userId;
+  });
+
+
   async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
     e.preventDefault();
 
@@ -58,7 +64,7 @@ export default function FormLike(data: any) {
 
   return (
     <>
-      {filtraLike && !filtraLike[0]?.userId.includes(session?.user?.email) ?
+      {deuLike && !deuLike.includes(session?.user?.email) ? (
         <form onSubmit={handleSubmit} className="flex">
           <button type="submit" name="like">
             <BsHandThumbsUp className="text-2xl" />
@@ -67,16 +73,16 @@ export default function FormLike(data: any) {
             {filtraLike?.length}
           </p>
         </form>
-      :
-      <form onSubmit={delLike} className="flex">
-      <button type="submit" name="lik">
-        <BsHandThumbsDown className="text-2xl" />
-      </button>
-      <p className=" font-bold bg-[var(--corPrincipal)]  text-xl text-center rounded-full shadow-md text-white w-10 h-10 ">
-        {filtraLike?.length}
-      </p>
-    </form>
-    }
+      ) : (
+        <form onSubmit={delLike} className="flex">
+          <button type="submit" name="lik">
+            <BsHandThumbsDown className="text-2xl" />
+          </button>
+          <p className=" font-bold bg-[var(--corPrincipal)]  text-xl text-center rounded-full shadow-md text-white w-10 h-10 ">
+            {filtraLike?.length}
+          </p>
+        </form>
+      )}
     </>
   );
 }

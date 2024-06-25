@@ -9,15 +9,19 @@ export default  function Modal(props: any) {
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 
-  const { data, mutate} = useSWR(urlC, fetcher);
+  const { data, mutate, error, isLoading} = useSWR(urlC, fetcher);
+
 
   useEffect(() => {
     setComment(data?.comment)
   },[data?.comment] )
 
+  if (error) return <div>Erro ao buscar comentários</div>;
+  if (!data) return <div>Loading...</div>;
+
   async function handleSubmit(e: any): Promise<void> {
    e.preventDefault()
-   
+  
     try {
       await fetch(urlC, {
         method: "PUT",
@@ -29,6 +33,7 @@ export default  function Modal(props: any) {
     } catch (error) {
       console.log(error);
     }
+   
     fechar()
   }
 
@@ -53,12 +58,20 @@ export default  function Modal(props: any) {
                 onChange={(e: any) => setComment(e.target.value) }
               ></textarea>
             </div>
+          {isLoading ?   
+            <button
+              type="submit"
+              className="w-[20%] bg-[var(--corPrincipal)] text-white py-2 px-3 m-0 "
+              disabled
+            >
+              Aguarde
+            </button> :
             <button
               type="submit"
               className="w-[20%] bg-[var(--corPrincipal)] text-white py-2 px-3 m-0 "
             >
               Editar
-            </button>
+            </button>}
           </form>
         </div>
 

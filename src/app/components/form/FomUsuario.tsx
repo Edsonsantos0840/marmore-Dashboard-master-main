@@ -6,6 +6,7 @@ export default function FormUsuario() {
   const tipo = "usuario";
 
   async function handleSubmit(form: FormData): Promise<void> {
+    'use server'
     const name = form.get("name");
     const email = form.get("email");
     const password = form.get("password");
