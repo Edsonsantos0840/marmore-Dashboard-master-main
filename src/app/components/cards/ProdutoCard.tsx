@@ -4,17 +4,15 @@ import { FaRegEdit } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
 import Link from "next/link";
 import DelProduct from "../function/DelProduct";
-import { useState } from "react";
 
 export default function ProdutoCard({ data }: any) {
-  const [id, setId] = useState('')
-  // console.log(id)
+
   return (
 
     <>
       <div
         key={data?.id}
-        className="max-w-sm:flex-col content-center p-3 gap-2  bg-[#00000026]  rounded-xl shadow-lg mt-5 mb-5 " onMouseOver={() => setId(data.id) }
+        className="max-w-sm:flex-col content-center p-3 gap-2  bg-[#00000026]  rounded-xl shadow-lg mt-5 mb-5 "
       >
         <div className=" gap-3  ">
           <h2 className=" text-red-700 font-bold text-center text-xl p-6">

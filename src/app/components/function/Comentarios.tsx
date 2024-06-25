@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-// components/LitaComment.js
 import useSWR, { mutate } from "swr";
+import { postData } from "./FetchD";
 const url: string = "http://localhost:3000/api/comentarios";
 const urlC: string = "http://localhost:3000/api/comment";
 
@@ -21,7 +21,7 @@ const Commentarios = (props: any) => {
       produtoId: props.produtoId,
       userId: props.userId,
     };
-
+    
     try {
       await fetch(urlC, {
         method: "POST",

@@ -1,21 +1,24 @@
-'use client'
+"use client";
 import Image from "next/image";
 import { FaRegEdit, FaRegCircle } from "react-icons/fa";
 import { BsFillSendFill } from "react-icons/bs";
 
 import Link from "next/link";
 import DelUser from "../function/DelUser";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
-export default function UserCard( {data} : any) {
-  const [id, setId] = useState('')
- 
+export default function UserCard({ data }: any) {
+  const [id, setId] = useState("");
+
+  useEffect(() => {
+    setId(data?.id);
+  }, [data?.id]);
+
   return (
     <>
       <div
         key={data?.id}
         className=" text-xs md:text-base bg-[#00000016]  rounded-sm shadow-lg mt-5 mb-5 "
-        onMouseOver={() => setId(data.id)}
       >
         <div className="flex justify-between items-center ">
           {data.userImage && (
@@ -48,14 +51,14 @@ export default function UserCard( {data} : any) {
 
           <div className="flex justify-between  items-center gap-1 md:gap-2 text-red-700 p-2 md:p-4 bg-[#fecaca82] w-[18%]">
             <Link href={"editarUsers/" + data.id}>
-            <FaRegEdit className="cursor-pointer" />
+              <FaRegEdit className="cursor-pointer" />
             </Link>
 
             <Link href={"verUser/" + data.id}>
-            <BsFillSendFill className="cursor-pointer" />
+              <BsFillSendFill className="cursor-pointer" />
             </Link>
 
-            <DelUser data = {id} />
+            <DelUser data={id} />
 
             {data.status === "ativo" ? (
               <FaRegCircle className="bg-green-400 rounded-full" />

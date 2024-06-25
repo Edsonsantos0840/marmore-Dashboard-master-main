@@ -1,19 +1,14 @@
-"use client";
+
 import { FaTrash } from "react-icons/fa";
+import { delData } from "./FetchD";
+import useSWR, { mutate } from "swr"; 
 
 export default function DelProduct({ data }: any) {
   const url: string = `http://localhost:3000//api/produtos/${data}`;
-  // console.log(data)
 
   async function delProduct(): Promise<void> {
-    try {
-      await fetch(url, {
-        method: "DELETE",
-      });
-      alert("Produto deletado com sucesso");
-    } catch (error) {
-      console.log(error);
-    }
+    delData(url)
+    mutate(url)
   }
   return (
     <>

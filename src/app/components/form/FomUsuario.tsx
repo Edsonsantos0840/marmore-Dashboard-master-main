@@ -1,3 +1,4 @@
+import { postData } from "../function/FetchD";
 import Input from "./Input";
 import { redirect } from "next/navigation";
 
@@ -6,7 +7,7 @@ export default function FormUsuario() {
   const tipo = "usuario";
 
   async function handleSubmit(form: FormData): Promise<void> {
-    'use server'
+    "use server";
     const name = form.get("name");
     const email = form.get("email");
     const password = form.get("password");
@@ -17,18 +18,9 @@ export default function FormUsuario() {
       password,
       tipo,
     };
-   
-    try {
-      await fetch(url, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(user),
-      });
-    } catch (error) {
-    
-      console.log(error);
-    }
-   
+
+    postData(url, user);
+
     redirect("/login");
   }
 
@@ -62,7 +54,7 @@ export default function FormUsuario() {
         confirmPass="confirmPass"
       />
 
-        <Input type="submit" value="Enviar" />
+      <Input type="submit" value="Enviar" />
     </form>
   );
 }

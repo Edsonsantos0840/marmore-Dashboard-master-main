@@ -23,7 +23,6 @@ export default function FormLike(data: any) {
     return e.userId;
   });
 
-
   async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
     e.preventDefault();
 

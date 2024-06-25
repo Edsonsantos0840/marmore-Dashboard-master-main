@@ -5,10 +5,8 @@ import getData from "../../components/function/GetData";
 export default async function Usuarios() {
   const url: string = `http://localhost:3000/api/users `;
 
-const res = await fetch(url)
-const user = await res.json()
-console.log(user)
- 
+  const res = await fetch(url);
+  const user = await res.json();
 
   return (
     <section className="w-full md:absolute md:top-0 md:left-[20%]  md:w-10/12 m-auto p-1   ">

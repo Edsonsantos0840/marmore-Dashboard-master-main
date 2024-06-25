@@ -9,6 +9,7 @@ import Image from "next/image";
 import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Commentarios from "../function/Comentarios";
+import { delData } from "../function/FetchD";
 
 export default function CardProdutoCliente(props: any) {
   const [id, setId] = useState("");
@@ -33,15 +34,8 @@ export default function CardProdutoCliente(props: any) {
   async function delComment(): Promise<void> {
     const confirmar: boolean = confirm("Voce realmente quer deletar?");
     if (confirmar) {
-      try {
-        await fetch(urlD, {
-          method: "DELETE",
-        });
-
-        mutate();
-      } catch (error) {
-        console.log(error);
-      }
+      delData(urlD);
+      mutate(comment);
     }
   }
   mutate();
@@ -59,13 +53,13 @@ export default function CardProdutoCliente(props: any) {
           </span>
         </div>
       )}
-      <div className="flex p-3 justify-between items-center">
+      <div className="flex p-1 justify-between items-center">
         {props.data && (
           <>
-            <h1>{props.data.category}</h1>
-            <div className="flex gap-3  items-center">
+            <h1 className="text-xl" >{props.data.category}</h1>
+            <div className="flex gap-2  items-center">
               <Link href={`/${props.data.category}`}>
-                <BsReplyAllFill className="text-3xl cursor-pointer" />
+                <BsReplyAllFill className="text-2xl cursor-pointer" />
               </Link>
 
               <h2>Voltar </h2>
@@ -106,7 +100,10 @@ export default function CardProdutoCliente(props: any) {
                         className="cursor-pointer"
                         onClick={() => setAbre(true)}
                       />
-                        <FaTrash className="cursor-pointer" onClick={delComment} />
+                      <FaTrash
+                        className="cursor-pointer"
+                        onClick={delComment}
+                      />
                     </div>
                   )}
                 </div>

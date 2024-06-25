@@ -9,9 +9,9 @@ export async function GET() {
     id: true,
     // description: true,
     image1: true,
-    // image2: true,
-    // image3: true,
-    // image4: true,
+    image2: true,
+    image3: true,
+    image4: true,
     // Title: true,
   }
  }
