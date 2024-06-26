@@ -1,0 +1,8 @@
+POSTGRES_URL="postgres://default:y0sLVhHr3TSd@ep-rough-wildflower-a4g5k0z4-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+POSTGRES_PRISMA_URL="postgres://default:y0sLVhHr3TSd@ep-rough-wildflower-a4g5k0z4-pooler.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require&pgbouncer=true&connect_timeout=15"
+POSTGRES_URL_NO_SSL="postgres://default:y0sLVhHr3TSd@ep-rough-wildflower-a4g5k0z4-pooler.us-east-1.aws.neon.tech:5432/verceldb"
+POSTGRES_URL_NON_POOLING="postgres://default:y0sLVhHr3TSd@ep-rough-wildflower-a4g5k0z4.us-east-1.aws.neon.tech:5432/verceldb?sslmode=require"
+POSTGRES_USER="default"
+POSTGRES_HOST="ep-rough-wildflower-a4g5k0z4-pooler.us-east-1.aws.neon.tech"
+POSTGRES_PASSWORD="y0sLVhHr3TSd"
+POSTGRES_DATABASE="verceldb"
