@@ -2,9 +2,10 @@ import { BsReplyAllFill } from "react-icons/bs";
 import CardUnico from "../../../components/cards/CardUnico";
 import getData from "../../../components/function/GetData";
 import Link from "next/link";
+import { apiProduçao } from "../../../../../libs/utils";
 
 export default async function VerProduto({ params }: any) {
-  const url: string = `/api/produtos/${params.id}`;
+  const url: string = `${apiProduçao}/api/produtos/${params.id}`;
   const data: any = await getData(url);
 
   return (

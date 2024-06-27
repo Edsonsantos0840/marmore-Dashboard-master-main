@@ -3,9 +3,10 @@ import UseConvert from "../../hooks/UseConvert";
 import ConvertImage from "../function/ConvertImage";
 import { redirect } from "next/navigation";
 import { postData } from "../function/FetchD";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default function FormUsuario() {
-  const url: string = "api/users";
+  const url: string = `${apiProduçao}/api/users`;
 
   const { userImage, convertToBase64 } = UseConvert();
 

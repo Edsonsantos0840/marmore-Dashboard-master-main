@@ -1,9 +1,10 @@
 import TopoAdd from "../../components/topos/TopoProduto";
 import ProdutoCard from "../../components/cards/ProdutoCard";
 import getData from "../../components/function/GetData";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default async function Produtos() {
-  const url: string = `http://localhost:3000/api/produtos `;
+  const url: string = `${apiProduçao}/api/produtos `;
 
   const product: any = await getData(url);
 

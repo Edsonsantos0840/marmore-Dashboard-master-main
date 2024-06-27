@@ -1,4 +1,5 @@
 
+import { apiProduçao } from "../../../../libs/utils";
 
 function Comments({ produtoId, userId }) {
 
@@ -9,7 +10,7 @@ function Comments({ produtoId, userId }) {
     if (!newComment) return;
 
     try {
-      const response = await fetch('/api/comment', {
+      const response = await fetch(`${apiProduçao}/api/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

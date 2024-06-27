@@ -2,9 +2,10 @@
 import { useRouter } from "next/navigation";
 import { FaTrash } from "react-icons/fa";
 import { delData } from "./FetchD";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default function DelUser({ data }: any) {
-  const url: string = `http://localhost:3000/api/users/${data}`;
+  const url: string = `${apiProduçao}/api/users/${data}`;
 
   const router = useRouter();
 

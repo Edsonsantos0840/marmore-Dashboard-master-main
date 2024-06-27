@@ -1,8 +1,9 @@
 import CardProdutoUnico from "../../components/cards/CardProdutoUnico";
 import getData from "../../components/function/GetData";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default async function Exteriores() {
-  const url = `http://localhost:3000/api/produtos`;
+  const url = `${apiProduçao}/api/produtos`;
   const  data: any  = await getData(url);
 
   const produtoExteriores = data.filter((e: any) => {

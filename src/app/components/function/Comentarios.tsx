@@ -1,9 +1,9 @@
 "use client";
 import { useState } from "react";
 import useSWR, { mutate } from "swr";
-import { postData } from "./FetchD";
-const url: string = "http://localhost:3000/api/comentarios";
-const urlC: string = "http://localhost:3000/api/comment";
+import { apiProduçao } from "../../../../libs/utils";
+const url: string = `${apiProduçao}/api/comentarios`;
+const urlC: string = `${apiProduçao}/api/comment`;
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 

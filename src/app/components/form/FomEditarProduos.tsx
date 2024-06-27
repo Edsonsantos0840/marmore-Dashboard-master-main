@@ -6,9 +6,10 @@ import ConvertImage from "../function/ConvertImage";
 import { useRouter } from "next/navigation";
 import useSWR from "swr";
 import { UpdateData } from "../function/FetchD";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default function FormEditaProduto({ params }: any) {
-  const url = `http://localhost:3000/api/produtos/${params.id}`;
+  const url = `${apiProduçao}/api/produtos/${params.id}`;
   const [category, setCategory] = useState<string>("");
   const [Title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");

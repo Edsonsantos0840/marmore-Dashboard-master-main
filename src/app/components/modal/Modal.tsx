@@ -2,9 +2,11 @@
 import { useEffect, useRef, useState } from "react";
 import useSWR from "swr";
 import { UpdateData } from "../function/FetchD";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default function Modal(props: any) {
-  const urlC: string = `http://localhost:3000/api/comentarios/${props.id}`;
+  
+  const urlC: string = `${apiProduçao}/comentarios/${props.id}`;
   const fecha: React.MutableRefObject<any> = useRef();
   const [comment, setComment] = useState("");
 

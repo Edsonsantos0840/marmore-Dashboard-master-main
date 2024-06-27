@@ -3,7 +3,7 @@ import { SyntheticEvent } from "react";
 import React, { useState } from "react";
 import Input from "./Input";
 import { useRouter } from "next/navigation";
-import { SignInResponse, signIn} from "next-auth/react";
+import {  signIn} from "next-auth/react";
 import Link from "next/link";
 
 export default function FormLogin() {

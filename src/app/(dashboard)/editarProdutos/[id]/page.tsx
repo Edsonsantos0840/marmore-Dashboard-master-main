@@ -4,10 +4,11 @@ import Input from "../../../components/form/Input";
 import UseConvert from "../../../hooks/UseConvert";
 import ConvertImage from "../../../components/function/ConvertImage";
 import { useRouter } from "next/navigation";
+import { apiProduçao } from "../../../../../libs/utils";
 
 export default function EditarProdutos({ params }: any) {
   const router = useRouter();
-  const url: string = `http://localhost:3000/api/produtos/${params.id}`;
+  const url: string = `${apiProduçao}/api/produtos/${params.id}`;
   const [category, setCategory] = useState<string>("");
   const [Title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");

@@ -2,9 +2,10 @@
 import { FaTrash } from "react-icons/fa";
 import { delData } from "./FetchD";
 import useSWR, { mutate } from "swr"; 
+import { apiProduçao } from "../../../../libs/utils";
 
 export default function DelProduct({ data }: any) {
-  const url: string = `http://localhost:3000//api/produtos/${data}`;
+  const url: string = `${apiProduçao}/api/produtos/${data}`;
 
   async function delProduct(): Promise<void> {
     delData(url)

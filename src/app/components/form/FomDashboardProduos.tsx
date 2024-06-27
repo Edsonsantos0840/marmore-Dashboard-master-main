@@ -3,9 +3,10 @@ import UseConvert from "../../hooks/UseConvert";
 import ConvertImage from "../function/ConvertImage";
 import { redirect } from "next/navigation";
 import { postData } from "../function/FetchD";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default function FormProdutos(): React.JSX.Element {
-  const url: string = "http://localhost:3000//api/produtos";
+  const url: string = `${apiProduçao}/api/produtos`;
 
   const {
     image1,

@@ -10,12 +10,13 @@ import { useSession } from "next-auth/react";
 import { useState } from "react";
 import Commentarios from "../function/Comentarios";
 import { delData } from "../function/FetchD";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default function CardProdutoCliente(props: any) {
   const [id, setId] = useState("");
-  const urlp = `http://localhost:3000/api/produtos/${props.data.id}`;
-  const urlD = `http://localhost:3000/api/comentarios/${id}`;
-  const urlC = `http://localhost:3000/api/comentarios`;
+  const urlp = `${apiProduçao}/api/produtos/${props.data.id}`;
+  const urlD = `${apiProduçao}/api/comentarios/${id}`;
+  const urlC = `${apiProduçao}/api/comentarios`;
   const [abre, setAbre] = useState(false);
 
   const { data: session } = useSession();

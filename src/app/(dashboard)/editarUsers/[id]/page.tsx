@@ -4,9 +4,10 @@ import UseConvert from "../../../hooks/UseConvert";
 import Input from "../../../components/form/Input";
 import ConvertImage from "../../../components/function/ConvertImage";
 import { useRouter } from "next/navigation";
+import { apiProduçao } from "../../../../../libs/utils";
 
 export default function EditarUsers({ params }: any) {
-  const url: string = `http://localhost:3000/api/users/${params.id}`;
+  const url: string = `${apiProduçao}/api/users/${params.id}`;
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [fone, setFone] = useState<string>("");
