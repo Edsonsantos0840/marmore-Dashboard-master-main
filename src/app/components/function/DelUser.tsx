@@ -5,7 +5,7 @@ import { delData } from "./FetchD";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default function DelUser({ data }: any) {
-  const url: string = `/api/users/${data}`;
+  const url: string = `${apiProduçao}/api/users/${data}`;
 
   const router = useRouter();
 

@@ -5,7 +5,7 @@ import useSWR, { mutate } from "swr";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default function DelProduct({ data }: any) {
-  const url: string = `/api/produtos/${data}`;
+  const url: string = `${apiProduçao}/api/produtos/${data}`;
 
   async function delProduct(): Promise<void> {
     delData(url)

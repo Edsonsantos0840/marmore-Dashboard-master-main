@@ -6,7 +6,7 @@ import { postData } from "../function/FetchD";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default function FormProdutos(): React.JSX.Element {
-  const url: string = `/api/produtos`;
+  const url: string = `${apiProduçao}/api/produtos`;
 
   const {
     image1,

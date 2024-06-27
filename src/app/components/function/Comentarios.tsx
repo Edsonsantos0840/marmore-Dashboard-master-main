@@ -2,8 +2,8 @@
 import { useState } from "react";
 import useSWR, { mutate } from "swr";
 import { apiProduçao } from "../../../../libs/utils";
-const url: string = `/api/comentarios`;
-const urlC: string = `/api/comment`;
+const url: string = `${apiProduçao}/api/comentarios`;
+const urlC: string = `${apiProduçao}/api/comment`;
 
 const fetcher = (url: any) => fetch(url).then((res) => res.json());
 

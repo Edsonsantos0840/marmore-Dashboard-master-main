@@ -9,7 +9,7 @@ import { UpdateData } from "../function/FetchD";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default function FormEditaProduto({ params }: any) {
-  const url = `/api/produtos/${params.id}`;
+  const url = `${apiProduçao}/api/produtos/${params.id}`;
   const [category, setCategory] = useState<string>("");
   const [Title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");

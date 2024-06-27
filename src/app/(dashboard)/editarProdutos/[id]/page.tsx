@@ -8,7 +8,7 @@ import { apiProduçao } from "../../../../../libs/utils";
 
 export default function EditarProdutos({ params }: any) {
   const router = useRouter();
-  const url: string = `/api/produtos/${params.id}`;
+  const url: string = `${apiProduçao}/api/produtos/${params.id}`;
   const [category, setCategory] = useState<string>("");
   const [Title, setTitle] = useState<string>("");
   const [description, setDescription] = useState<string>("");

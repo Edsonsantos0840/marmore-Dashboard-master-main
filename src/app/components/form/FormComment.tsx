@@ -3,7 +3,7 @@ import getData from "../function/GetData";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default async function FormComment(props: { dat: any; userId: any }) {
-  const urlp = `/api/produtos/${props.dat}`;
+  const urlp = `${apiProduçao}/api/produtos/${props.dat}`;
   const data: any = await getData(urlp);
 
   return (

@@ -4,7 +4,7 @@ import getData from "../../components/function/GetData";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default async function Produtos() {
-  const url: string = `/api/produtos `;
+  const url: string = `${apiProduçao}/api/produtos `;
 
   const product: any = await getData(url);
 

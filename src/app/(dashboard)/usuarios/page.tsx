@@ -3,7 +3,7 @@ import UserCard from "../../components/cards/UserCard";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default async function Usuarios() {
-  const url: string = `/api/users `;
+  const url: string = `${apiProduçao}/api/users `;
 
   const res = await fetch(url);
   const user = await res.json();

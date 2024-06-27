@@ -4,7 +4,7 @@ import { redirect } from "next/navigation";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default function FormUsuario() {
-  const url = `/api/users`;
+  const url = `${apiProduçao}/api/users`;
   const tipo = "usuario";
 
   async function handleSubmit(form: FormData): Promise<void> {
