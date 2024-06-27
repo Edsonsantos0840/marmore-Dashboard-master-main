@@ -4,7 +4,7 @@ import getData from "../../components/function/GetData";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default async function Escadas() {
-  const url = `${apiProduçao}/api/produtos`;
+  const url = `/api/produtos`;
   const data: any  = await getData(url);
 
   const produtoEscadas = data.filter((e: any) => {

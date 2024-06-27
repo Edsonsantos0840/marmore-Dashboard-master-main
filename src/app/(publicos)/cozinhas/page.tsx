@@ -3,7 +3,7 @@ import getData from "../../components/function/GetData";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default async function Cozinhas() {
-  const url = `${apiProduçao}/api/produtos`;
+  const url = `/api/produtos`;
   const data: any  = await getData(url);
 
   const produtoCozinhas = data.filter((e: any) => {

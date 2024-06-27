@@ -6,7 +6,7 @@ import Link from "next/link";
 import { apiProduçao } from "../../../../../libs/utils";
 
 export default async function VerUsuario({ params }: any) {
-  const url: string = `${apiProduçao}/api/users/${params.id}`;
+  const url: string = `/api/users/${params.id}`;
 
   const data: any = await getData(url);
 

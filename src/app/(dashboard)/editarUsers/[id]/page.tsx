@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 import { apiProduçao } from "../../../../../libs/utils";
 
 export default function EditarUsers({ params }: any) {
-  const url: string = `${apiProduçao}/api/users/${params.id}`;
+  const url: string = `/api/users/${params.id}`;
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [fone, setFone] = useState<string>("");

@@ -6,8 +6,8 @@ import { useSession } from "next-auth/react";
 import { apiProduçao } from "../../../../libs/utils";
 
 export default function FormLike(data: any) {
-  const url: string = `${apiProduçao}/api/like`;
-  const urlD: string = `${apiProduçao}/api/like/${data?.dat?.likes[0]?.id}`;
+  const url: string = `/api/like`;
+  const urlD: string = `/api/like/${data?.dat?.likes[0]?.id}`;
 
   const fetcher = (url: string) => fetch(url).then((res) => res.json());
 

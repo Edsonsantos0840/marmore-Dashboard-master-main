@@ -10,7 +10,7 @@ function Comments({ produtoId, userId }) {
     if (!newComment) return;
 
     try {
-      const response = await fetch(`${apiProduçao}/api/comment`, {
+      const response = await fetch(`/api/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

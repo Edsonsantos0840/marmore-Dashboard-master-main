@@ -14,9 +14,9 @@ import { apiProduçao } from "../../../../libs/utils";
 
 export default function CardProdutoCliente(props: any) {
   const [id, setId] = useState("");
-  const urlp = `${apiProduçao}/api/produtos/${props.data.id}`;
-  const urlD = `${apiProduçao}/api/comentarios/${id}`;
-  const urlC = `${apiProduçao}/api/comentarios`;
+  const urlp = `/api/produtos/${props.data.id}`;
+  const urlD = `/api/comentarios/${id}`;
+  const urlC = `/api/comentarios`;
   const [abre, setAbre] = useState(false);
 
   const { data: session } = useSession();

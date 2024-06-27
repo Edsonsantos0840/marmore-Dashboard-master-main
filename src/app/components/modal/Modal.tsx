@@ -6,7 +6,7 @@ import { apiProduçao } from "../../../../libs/utils";
 
 export default function Modal(props: any) {
   
-  const urlC: string = `${apiProduçao}/api/comentarios/${props.id}`;
+  const urlC: string = `/api/comentarios/${props.id}`;
   const fecha: React.MutableRefObject<any> = useRef();
   const [comment, setComment] = useState("");
 

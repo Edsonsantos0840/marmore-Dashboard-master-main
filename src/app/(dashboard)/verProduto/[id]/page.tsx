@@ -5,7 +5,7 @@ import Link from "next/link";
 import { apiProduçao } from "../../../../../libs/utils";
 
 export default async function VerProduto({ params }: any) {
-  const url: string = `${apiProduçao}/api/produtos/${params.id}`;
+  const url: string = `/api/produtos/${params.id}`;
   const data: any = await getData(url);
 
   return (
