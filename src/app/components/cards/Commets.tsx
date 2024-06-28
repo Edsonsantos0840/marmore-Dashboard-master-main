@@ -1,46 +1,46 @@
 
-import { apiProduçao } from "../../../../libs/utils";
+// import { apiProduçao } from "../../../../libs/utils";
 
-function Comments({ produtoId, userId }) {
+// function Comments({ produtoId, userId }) {
 
-  const handleCommentSubmit = async (form: FormData) => {
-   'use server'
-  const newComment = form.get('newComment')
+//   const handleCommentSubmit = async (form: FormData) => {
+//    'use server'
+//   const newComment = form.get('newComment')
  
-    if (!newComment) return;
+//     if (!newComment) return;
 
-    try {
-      const response = await fetch(`${apiProduçao}/api/comment`, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ comment: newComment, produtoId, userId }),
-      });
+//     try {
+//       const response = await fetch(`${apiProduçao}/api/comment`, {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify({ comment: newComment, produtoId, userId }),
+//       });
 
-      if (!response.ok) {
-        throw new Error('Erro ao adicionar comentário');
-      }
+//       if (!response.ok) {
+//         throw new Error('Erro ao adicionar comentário');
+//       }
 
-    } catch (error) {
-      console.error('Erro ao adicionar comentário:', error);
-    }
-  };
+//     } catch (error) {
+//       console.error('Erro ao adicionar comentário:', error);
+//     }
+//   };
  
 
-  return (
-    <div>
-      <h2>Comentários</h2>
-      <form action={handleCommentSubmit} method='POST' >
-        <textarea
-          name='newComment'
-          placeholder="Adicione um comentário"
-        ></textarea>
-        <button type="submit">Enviar</button>
-      </form>
+//   return (
+//     <div>
+//       <h2>Comentários</h2>
+//       <form action={handleCommentSubmit} method='POST' >
+//         <textarea
+//           name='newComment'
+//           placeholder="Adicione um comentário"
+//         ></textarea>
+//         <button type="submit">Enviar</button>
+//       </form>
 
-    </div>
-  );
-}
+//     </div>
+//   );
+// }
 
-export default Comments;
+// export default Comments;
