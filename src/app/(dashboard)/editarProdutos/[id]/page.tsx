@@ -1,85 +1,85 @@
 "use client";
-// import React, { useEffect, useState } from "react";
-// import Input from "../../../components/form/Input";
-// import UseConvert from "../../../hooks/UseConvert";
-// import ConvertImage from "../../../components/function/ConvertImage";
-// import { useRouter } from "next/navigation";
-// import { apiProduçao } from "../../../../../libs/utils";
+import React, { useEffect, useState } from "react";
+import Input from "../../../components/form/Input";
+import UseConvert from "../../../hooks/UseConvert";
+import ConvertImage from "../../../components/function/ConvertImage";
+import { useRouter } from "next/navigation";
+import { apiProduçao } from "../../../../../libs/utils";
 
 export default function EditarProdutos({ params }: any) {
-  // const router = useRouter();
-  // const url: string = `${apiProduçao}/api/produtos/${params.id}`;
-  // const [category, setCategory] = useState<string>("");
-  // const [Title, setTitle] = useState<string>("");
-  // const [description, setDescription] = useState<string>("");
-  // const [product, setProduct] = useState(null);
-  // const [loading, setLoading] = useState<boolean>(false);
-  // const [err, setErr] = useState<boolean>(false);
+  const router = useRouter();
+  const url: string = `${apiProduçao}/api/produtos/${params.id}`;
+  const [category, setCategory] = useState<string>("");
+  const [Title, setTitle] = useState<string>("");
+  const [description, setDescription] = useState<string>("");
+  const [product, setProduct] = useState(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [err, setErr] = useState<boolean>(false);
 
-  // const {
-  //   image1,
-  //   image2,
-  //   image3,
-  //   image4,
-  //   convert642,
-  //   convert643,
-  //   convert644,
-  //   convert645,
-  // } = UseConvert();
+  const {
+    image1,
+    image2,
+    image3,
+    image4,
+    convert642,
+    convert643,
+    convert644,
+    convert645,
+  } = UseConvert();
 
-  // useEffect(() => {
-  //   async function getProduto(): Promise<void> {
-  //     setLoading(true);
-  //     try {
-  //       const res = await fetch(url);
-  //       const json = await res.json();
-  //       setProduct(json);
-  //     } catch (error) {
-  //       setErr(error);
-  //       console.log(error);
-  //     }
-  //     setLoading(false);
-  //   }
-  //   getProduto();
-  // }, [url]);
+  useEffect(() => {
+    async function getProduto(): Promise<void> {
+      setLoading(true);
+      try {
+        const res = await fetch(url);
+        const json = await res.json();
+        setProduct(json);
+      } catch (error) {
+        setErr(error);
+        console.log(error);
+      }
+      setLoading(false);
+    }
+    getProduto();
+  }, [url]);
 
-  // useEffect(() => {
-  //   setTitle(product?.Title);
-  //   setCategory(product?.category);
-  //   setDescription(product?.description);
-  // }, [product]);
+  useEffect(() => {
+    setTitle(product?.Title);
+    setCategory(product?.category);
+    setDescription(product?.description);
+  }, [product]);
 
-  // async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
-  //   e.preventDefault();
-  //   const produto: object = {
-  //     Title,
-  //     image1,
-  //     image2,
-  //     image3,
-  //     image4,
-  //     category,
-  //     description,
-  //   };
-  //   setLoading(true);
-  //   try {
-  //     await fetch(url, {
-  //       method: "PUT",
-  //       headers: { "Content-Type": "application/json" },
-  //       body: JSON.stringify(produto),
-  //     });
+  async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
+    e.preventDefault();
+    const produto: object = {
+      Title,
+      image1,
+      image2,
+      image3,
+      image4,
+      category,
+      description,
+    };
+    setLoading(true);
+    try {
+      await fetch(url, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(produto),
+      });
 
-  //     alert("Produto editado com sucesso");
-  //     router.push("/produtos");
-  //   } catch (error) {
-  //     setErr(error);
-  //     console.log(error);
-  //   }
-  //   setLoading(false);
-  // }
+      alert("Produto editado com sucesso");
+      router.push("/produtos");
+    } catch (error) {
+      setErr(error);
+      console.log(error);
+    }
+    setLoading(false);
+  }
 
   return (
     <div className="w-full md:absolute md:top-0 md:left-[19%]  md:w-10/12 m-auto pr-1 p-1">
-      {/* <form
+      <form
         onSubmit={handleSubmit}
         className="flex flex-col items-center w-4/4  shadow-lg rounded-md p-10 "
       >
@@ -140,7 +140,7 @@ export default function EditarProdutos({ params }: any) {
           <button>Enviar</button>
         )}
         {err && <p>{err}</p>}
-      </form> */}
+      </form>
     </div>
   );
 }

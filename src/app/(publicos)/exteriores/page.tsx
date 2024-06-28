@@ -1,26 +1,26 @@
-// import CardProdutoUnico from "../../components/cards/CardProdutoUnico";
-// import getData from "../../components/function/GetData";
-// import { apiProduçao } from "../../../../libs/utils";
+import CardProdutoUnico from "../../components/cards/CardProdutoUnico";
+import getData from "../../components/function/GetData";
+import { apiProduçao } from "../../../../libs/utils";
 
 export default async function Exteriores() {
-//     const url = `${apiProduçao}/api/produtos`;
-//   const  data: any  = await getData(url);
+    const url = `${apiProduçao}/api/produtos`;
+  const  data: any  = await getData(url);
 
-//   const produtoExteriores = data.filter((e: any) => {
-//     if (e?.category.includes("exteriores")) {
-//       return e;
-//     }
-//   });
+  const produtoExteriores = data.filter((e: any) => {
+    if (e?.category.includes("exteriores")) {
+      return e;
+    }
+  });
 
   return (
     <section>
       <h1 className="pt-16">Exteriores</h1>
-      {/* {produtoExteriores &&
+      {produtoExteriores &&
         produtoExteriores.map((produto: any) => (
           <div key={produto.id}>
             <CardProdutoUnico data={produto} />
           </div>
-        ))} */}
+        ))}
     </section>
   );
 }

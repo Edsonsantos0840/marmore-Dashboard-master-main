@@ -48,7 +48,7 @@ export default function Modal() {
             <div>
               <textarea
                 id="tes"
-                className="w-[100%] h-13"
+                className="w-[100%] h-13 "
                 placeholder="Deixe seu Comentário"
                 name="comentario"
               ></textarea>

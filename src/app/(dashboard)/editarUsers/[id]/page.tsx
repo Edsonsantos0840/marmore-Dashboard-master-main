@@ -1,77 +1,77 @@
 "use client";
-// import React, { useEffect, useState } from "react";
-// import UseConvert from "../../../hooks/UseConvert";
-// import Input from "../../../components/form/Input";
-// import ConvertImage from "../../../components/function/ConvertImage";
-// import { useRouter } from "next/navigation";
-// import { apiProduçao } from "../../../../../libs/utils";
+import React, { useEffect, useState } from "react";
+import UseConvert from "../../../hooks/UseConvert";
+import Input from "../../../components/form/Input";
+import ConvertImage from "../../../components/function/ConvertImage";
+import { useRouter } from "next/navigation";
+import { apiProduçao } from "../../../../../libs/utils";
 
 export default function EditarUsers({ params }: any) {
-//   const url: string = `${apiProduçao}/api/users/${params.id}`;
-//   const [name, setName] = useState<string>("");
-//   const [email, setEmail] = useState<string>("");
-//   const [fone, setFone] = useState<string>("");
-//   const [tipo, setTipo] = useState<string>("");
-//   const [user, setUser] = useState(null);
-//   const [loading, setLoading] = useState<boolean>(false);
-//   const [err, setErr] = useState<boolean>(false);
+  const url: string = `${apiProduçao}/api/users/${params.id}`;
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [fone, setFone] = useState<string>("");
+  const [tipo, setTipo] = useState<string>("");
+  const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [err, setErr] = useState<boolean>(false);
 
-//   const route = useRouter();
+  const route = useRouter();
 
-//   const { userImage, setUserImage, convertToBase64 } = UseConvert();
+  const { userImage, setUserImage, convertToBase64 } = UseConvert();
 
-//   useEffect(() => {
-//     async function getUser(): Promise<void> {
-//       setLoading(true);
-//       try {
-//         const res = await fetch(url);
-//         const json = await res.json();
-//         setUser(json);
-//       } catch (error) {
-//         setErr(error);
-//         console.log(error);
-//       }
-//       setLoading(false);
-//     }
-//     getUser();
-//   }, [url]);
+  useEffect(() => {
+    async function getUser(): Promise<void> {
+      setLoading(true);
+      try {
+        const res = await fetch(url);
+        const json = await res.json();
+        setUser(json);
+      } catch (error) {
+        setErr(error);
+        console.log(error);
+      }
+      setLoading(false);
+    }
+    getUser();
+  }, [url]);
 
-//   async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
-//     e.preventDefault();
-//     const usuario: object = {
-//       name,
-//       email,
-//       fone,
-//       tipo,
-//       userImage,
-//     };
+  async function handleSubmit(e: React.SyntheticEvent): Promise<void> {
+    e.preventDefault();
+    const usuario: object = {
+      name,
+      email,
+      fone,
+      tipo,
+      userImage,
+    };
 
-//     setLoading(true);
-//     try {
-//       await fetch(url, {
-//         method: "PUT",
-//         headers: { "Content-Type": "application/json" },
-//         body: JSON.stringify(usuario),
-//       });
+    setLoading(true);
+    try {
+      await fetch(url, {
+        method: "PUT",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(usuario),
+      });
 
-//       alert("Usuário editado com sucesso");
-//       route.push("/usuarios");
-//     } catch (error) {
-//       setErr(error);
-//       console.log(error);
-//     }
-//     setLoading(false);
-//   }
-//   useEffect(() => {
-//     setName(user?.name);
-//     setEmail(user?.email);
-//     setFone(user?.fone);
-//     setTipo(user?.tipo);
-//   }, [user]);
+      alert("Usuário editado com sucesso");
+      route.push("/usuarios");
+    } catch (error) {
+      setErr(error);
+      console.log(error);
+    }
+    setLoading(false);
+  }
+  useEffect(() => {
+    setName(user?.name);
+    setEmail(user?.email);
+    setFone(user?.fone);
+    setTipo(user?.tipo);
+  }, [user]);
 
   return (
     <div className="w-full md:absolute md:top-0 md:left-[19%]  md:w-10/12 m-auto pr-1 p-1">
-      {/* <form
+      <form
         onSubmit={handleSubmit}
         className="flex flex-col justify-center items-center w-3/4 p-8 shadow-lg rounded-md "
       >
@@ -125,7 +125,7 @@ export default function EditarUsers({ params }: any) {
         ) : (
           <button>Enviar</button>
         )}
-      </form> */}
+      </form>
     </div>
   );
 }
