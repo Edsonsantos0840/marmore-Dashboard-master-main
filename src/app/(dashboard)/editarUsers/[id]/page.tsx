@@ -1,4 +1,4 @@
-// "use client";
+"use client";
 // import React, { useEffect, useState } from "react";
 // import UseConvert from "../../../hooks/UseConvert";
 // import Input from "../../../components/form/Input";
@@ -6,7 +6,7 @@
 // import { useRouter } from "next/navigation";
 // import { apiProduçao } from "../../../../../libs/utils";
 
-// export default function EditarUsers({ params }: any) {
+export default function EditarUsers({ params }: any) {
 //   const url: string = `${apiProduçao}/api/users/${params.id}`;
 //   const [name, setName] = useState<string>("");
 //   const [email, setEmail] = useState<string>("");
@@ -69,63 +69,63 @@
 //     setTipo(user?.tipo);
 //   }, [user]);
 
-//   return (
-//     <div className="w-full md:absolute md:top-0 md:left-[19%]  md:w-10/12 m-auto pr-1 p-1">
-//       <form
-//         onSubmit={handleSubmit}
-//         className="flex flex-col justify-center items-center w-3/4 p-8 shadow-lg rounded-md "
-//       >
-//         {err && <p>{err}</p>}
-//         <h1 className="text-3xl text-center mb-8 font-bold ">
-//           Cadastro de Usuário
-//         </h1>
-//         <input
-//           type="text"
-//           placeholder="Digite seu Nome"
-//           value={name}
-//           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-//           setName(e.target.value)
-//           }
-//         />
-//         <input
-//           type="email"
-//           placeholder="Digite seu E-mail"
-//           value={email}
-//           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-//             setEmail(e.target.value)
-//           }
-//         />
-//         <input
-//           type="tel"
-//           placeholder="Digite seu Telefone"
-//           value={fone}
-//           onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-//           setFone(e.target.value)
-//           }
-//         />
-//         <div className=" flex justify-between w-full gap-2 ml-4">
-//           <label className=" text-center py-2 w-full rounded-md border border-[#4e1d1d87] my-2">
-//             <select
-//               id="tipo"
-//               value={tipo}
-//               onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
-//               setTipo(e.target.value)
-//               }
-//             >
-//               <option value="">Escolha o tipo</option>
-//               <option value="adimin">Administrador</option>
-//               <option value="colaborador">Colaborador</option>
-//             </select>
-//           </label>
-//         </div>
-//         <ConvertImage func={convertToBase64} img={userImage} />
+  return (
+    <div className="w-full md:absolute md:top-0 md:left-[19%]  md:w-10/12 m-auto pr-1 p-1">
+      {/* <form
+        onSubmit={handleSubmit}
+        className="flex flex-col justify-center items-center w-3/4 p-8 shadow-lg rounded-md "
+      >
+        {err && <p>{err}</p>}
+        <h1 className="text-3xl text-center mb-8 font-bold ">
+          Cadastro de Usuário
+        </h1>
+        <input
+          type="text"
+          placeholder="Digite seu Nome"
+          value={name}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setName(e.target.value)
+          }
+        />
+        <input
+          type="email"
+          placeholder="Digite seu E-mail"
+          value={email}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setEmail(e.target.value)
+          }
+        />
+        <input
+          type="tel"
+          placeholder="Digite seu Telefone"
+          value={fone}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+          setFone(e.target.value)
+          }
+        />
+        <div className=" flex justify-between w-full gap-2 ml-4">
+          <label className=" text-center py-2 w-full rounded-md border border-[#4e1d1d87] my-2">
+            <select
+              id="tipo"
+              value={tipo}
+              onChange={(e: React.ChangeEvent<HTMLSelectElement>) =>
+              setTipo(e.target.value)
+              }
+            >
+              <option value="">Escolha o tipo</option>
+              <option value="adimin">Administrador</option>
+              <option value="colaborador">Colaborador</option>
+            </select>
+          </label>
+        </div>
+        <ConvertImage func={convertToBase64} img={userImage} />
 
-//         {loading ? (
-//           <Input type="submit" value="Aguarde" disabled />
-//         ) : (
-//           <button>Enviar</button>
-//         )}
-//       </form>
-//     </div>
-//   );
-// }
+        {loading ? (
+          <Input type="submit" value="Aguarde" disabled />
+        ) : (
+          <button>Enviar</button>
+        )}
+      </form> */}
+    </div>
+  );
+}
